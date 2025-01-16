@@ -1,0 +1,40 @@
+[
+  {
+    "arguments": [
+      "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/tools/avr/bin/avr-g++",
+      "-c",
+      "-DUSE_I2C=1",
+      "-D",
+      "DEBUG",
+      "-mmcu=atmega328p",
+      "-DF_CPU=16000000L",
+      "-DARDUINO=1819",
+      "-DARDUINO_ARCH_AVR",
+      "-D__PROG_TYPES_COMPAT__",
+      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino",
+      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/variants/standard",
+      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
+      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
+      "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
+      "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
+      "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
+      "-I/home/paw/git/temp-monitor/lib/MAX6675",
+      "-I/home/paw/git/temp-monitor/lib/SdFat/src",
+      "-Wall",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-Os",
+      "-fpermissive",
+      "-fno-exceptions",
+      "-std=gnu++11",
+      "-fno-threadsafe-statics",
+      "-flto",
+      "-o",
+      "build-uno/ExFatLogger.cpp.o",
+      "ExFatLogger.cpp"
+    ],
+    "directory": "/home/paw/git/temp-monitor",
+    "file": "/home/paw/git/temp-monitor/ExFatLogger.cpp",
+    "output": "/home/paw/git/temp-monitor/build-uno/ExFatLogger.cpp.o"
+  }
+]
