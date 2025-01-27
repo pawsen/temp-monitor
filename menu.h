@@ -10,11 +10,12 @@
 
 class Menu {
 public:
-  // Menu(uint8_t ENCODER_PIN_A, uint8_t ENCODER_PIN_B, uint8_t
-  // ENCODER_BUTTON_PIN);
-  void init(uint8_t ENCODER_PIN_A, uint8_t ENCODER_PIN_B,
-            uint8_t ENCODER_BUTTON_PIN);
+    Menu(uint8_t ENCODER_PIN_A, uint8_t ENCODER_PIN_B, uint8_t ENCODER_BUTTON_PIN);
+  // void init(uint8_t ENCODER_PIN_A, uint8_t ENCODER_PIN_B,
+  //           uint8_t ENCODER_BUTTON_PIN);
+    void init();
   void update();
+    void displayDefaultScreen(double currentTemp, double targetTemp);
 
 private:
   Encoder encoder;
@@ -22,6 +23,9 @@ private:
   bool menuActive = false;
   bool heaterEnabled = false;
   unsigned long lastButtonPress = 0;
+  unsigned long lastButtonRelease = 0;
+  bool buttonPressed = false;
+bool longPressHandled = false;
 
   void handleMenuNavigation();
   void selectMenuItem();
@@ -33,8 +37,6 @@ private:
   uint8_t ENCODER_PIN_A;
   uint8_t ENCODER_PIN_B;
   uint8_t ENCODER_BUTTON_PIN;
-
-  // I2C_LCD lcd; // LCD object
 };
 // Access the HeaterControl instance from main.ino
 extern HeaterControl heaterControl;

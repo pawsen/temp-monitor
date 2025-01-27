@@ -17,6 +17,7 @@ public:
     void toggleHeater();
     bool getHeaterStatus();
     uint32_t getTimeUntilDisable();
+    void setTimeUntilDisable(uint32_t time);
     void setTargetTemperature(double targetTemp);
     double getTargetTemperature();
     double getCurrentTemperature();

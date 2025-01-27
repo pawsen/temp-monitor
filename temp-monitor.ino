@@ -1,8 +1,15 @@
+
+// SD_FAT_TYPE = 0 for SdFat/File as defined in SdFatConfig.h,
+// 1 for FAT16/FAT32, 2 for exFAT, 3 for FAT16/FAT32 and exFAT.
+// #define SD_FAT_TYPE 1
+
 #include "heaterControl.h"
 #include "I2C_LCD.h"
 #include "log.h"
 #include "menu.h"
-#include "tempReader.h"
+// #include "tempReader.h"
+#include <MAX6675.h>
+
 
 // Change these two numbers to the pins connected to your encoder.
 //   Best Performance: both pins have interrupt capability
@@ -11,30 +18,65 @@
 // On Arduino Uno you can only use pin 2 and 3 for interrupts.
 const uint8_t ENCODER_PIN_A = 2;
 const uint8_t ENCODER_PIN_B = 3;
-const uint8_t ENCODER_BUTTON_PIN = 4;
+const uint8_t ENCODER_BUTTON_PIN = 5;
 
-const uint8_t HEATER_PIN = 5;
-const uint8_t SD_CS_PIN = 10; // Chip Select for the SD card
+const uint8_t HEATER_PIN = 6;
+const uint8_t SD_CS_PIN = 4; // Chip Select for the SD card
+// List of CS pins to disable
+// example, with the Ethernet shield, set DISABLE_CS_PIN to 10 to disable the
+// Ethernet controller.
+// const uint8_t DISABLE_CS_PINS[] = {10};
+const uint8_t DISABLE_CS_PIN= 10;
 
+// HW SPI:
+// | Name                       | pin |
+// |----------------------------|-----|
+// | CLOCK                      |  13 |
+// | MISO (Master in/Slave out) |  12 |
+// | MOSI (Master out/Slave in) |  11 |
+
+// Number of thermocouples
+const int ThermoCouplesNum = 1;
 // SPI Pins (shared by SD card and thermocouples)
-const uint8_t SPI_SCK_PIN = 13; // SPI Clock pin
-const uint8_t SPI_MISO_PIN =
-    12; // SPI MISO pin (used for reading data from thermocouples)
-const uint8_t SPI_MOSI_PIN = 11; // SPI MOSI pin (not used by the thermocouples)
+const uint8_t MAX6675_CS_PINS[ThermoCouplesNum] = {7}; // Chip Select pins
+const uint8_t SPI_MISO_PIN = 8;
+const uint8_t SPI_SCK_PIN = 9;
 
-// MAX6675 Thermocouple Pins
-const uint8_t MAX6675_CS_PINS[] = {6,
-                                   7}; // Chip Select for thermocouples (array)
-// const uint8_t NUM_THERMOCOUPLES = 2;  // Number of thermocouples
-const uint8_t NUM_THERMOCOUPLES =
-    sizeof(MAX6675_CS_PINS) / sizeof(MAX6675_CS_PINS[0]);
+const uint8_t NUM_THERMOCOUPLES = 1;
 
-HeaterControl heaterControl(HEATER_PIN);
-Log logger(NUM_THERMOCOUPLES);
 I2C_LCD lcd(0x27);
+HeaterControl heaterControl(HEATER_PIN);
+Log logger(ThermoCouplesNum );
+Menu menu(ENCODER_PIN_A, ENCODER_PIN_B, ENCODER_BUTTON_PIN);
+MAX6675 thermoCouple(MAX6675_CS_PINS[0], SPI_MISO_PIN , SPI_SCK_PIN);
+
+void displayError(Log& logger) {
+  // Retrieve and display the error message
+  Serial.println(logger.getErrorMessage());
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print(logger.getErrorMessage());
+  delay(2000);
+}
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
+
+  // Initialize the LCD
+  Wire.begin();
+  lcd.begin(16, 2);
+  lcd.print("Hello");
+
+  delay(250);
+  // Initialize thermocouples
+  SPI.begin();
+  thermoCouple.begin();
+  Serial.print("Thermocouple ");
+  Serial.print(": ");
+  int status = thermoCouple.read();
+  if (status != STATUS_OK) {Serial.println(F("ThermoCouple ERROR!"));}
+  float temp = thermoCouple.getTemperature();
+  Serial.println(temp);
 
   // Initialize the heater control
   heaterControl.init();
@@ -42,54 +84,57 @@ void setup() {
   heaterControl.setTargetTemperature(40.0);
 
   // Initialize the SD card for logging
-  logger.init(SD_CS_PIN);
-  logger.openNewLogFile();
+  pinMode(DISABLE_CS_PIN, OUTPUT);
+  digitalWrite(DISABLE_CS_PIN, HIGH);
+
+  if (logger.init(SD_CS_PIN) != 0)
+    displayError(logger);
+  if (logger.openNewLogFile() != 0)
+    displayError(logger);
 
   // Initialize the rotary encoder menu
-  menu.init(ENCODER_PIN_A, ENCODER_PIN_B, ENCODER_BUTTON_PIN);
-
-  // Initialize the LCD
-  lcd.begin(16, 2);
-
-  // Initialize the thermocouple reader
-  thermocoupleReader.init(NUM_THERMOCOUPLES, MAX6675_CS_PINS, SPI_MISO_PIN,
-                          SPI_SCK_PIN);
+  menu.init();
 }
 
 void loop() {
   // Update the menu, handle button presses and rotary encoder inputs
   menu.update();
 
-  // Get the current temperatures from thermocouples
-  double *temperatures = thermocoupleReader.getTemperatures();
+  int status = thermoCouple.read();
+  if (status != STATUS_OK) {Serial.println(F("ThermoCouple ERROR!"));}
+  float currentTemp = thermoCouple.getTemperature();
 
   // Update the heater control logic using the first thermocouple as input
-  heaterControl.update(temperatures[0]);
+  heaterControl.update(currentTemp);
 
   double targetTemp = heaterControl.getTargetTemperature();
   bool heaterStatus = heaterControl.getHeaterStatus();
+  uint32_t autoDisableTime = heaterControl.getTimeUntilDisable();
+  uint32_t hours = autoDisableTime / 3600000; // Calculate hours
+  uint32_t minutes =
+      (autoDisableTime % 3600000) / 60000; // Calculate remaining minutes
+
+  // Display default screen when menu is not active
+  menu.displayDefaultScreen(currentTemp, targetTemp);
 
   // Optional: Log the status or display it on an LCD
-  Serial.print("Target °C:, ");
+  Serial.print(F("Target °C:, "));
   Serial.print(targetTemp);
-  Serial.print(" Current: ");
-  Serial.print(temperatures[0]);
-  Serial.print(" Heater: ");
-  Serial.println(heaterStatus ? "ON" : "OFF");
+  Serial.print(F(" Current: "));
+  Serial.print(currentTemp);
+  Serial.print(F(" Heater: "));
+  Serial.print(heaterStatus ? "ON" : "OFF");
+  Serial.print(F(" Auto-disable: "));
+  Serial.print(hours);
+  Serial.print(F("h "));
+  Serial.print(minutes);
+  Serial.print(F("m"));
+  Serial.println();
 
-  lcd.setCursor(0, 0);
-  lcd.print("Target: ");
-  lcd.print(targetTemp);
-  lcd.setCursor(0, 1);
-  lcd.print("Current: ");
-  lcd.print(temperatures[0]);
-  lcd.setCursor(0, 2);
-  lcd.print("Heater: ");
-  lcd.println(heaterStatus ? "ON" : "OFF");
-
+  double temperatures[NUM_THERMOCOUPLES] = {(double) currentTemp};
   // Log the current temperatures and heater status to the SD card
   logger.logData(temperatures, heaterStatus);
   // Periodically flush the log file to ensure data is saved
-  logger.flushLogFile();
+  // logger.flushLogFile();
   delay(1000);
 }
