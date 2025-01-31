@@ -86,6 +86,8 @@ void setup() {
   heaterControl.init();
   // Optionally set the initial target temperature
   heaterControl.setTargetTemperature(40.0);
+  // make sure the heater is turned off
+  heaterControl.disable();
 
   // Initialize the SD card for logging
   pinMode(DISABLE_CS_PIN, OUTPUT);

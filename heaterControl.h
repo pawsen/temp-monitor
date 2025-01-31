@@ -1,11 +1,7 @@
 #ifndef HEATERCONTROL_H
 #define HEATERCONTROL_H
 
-#include <PID_v1.h>
-// Include Arduino.h for uint8_t. Alternative is to do a typedef
-// typedef unsigned char uint8_t;
 #include <Arduino.h>
-
 
 class HeaterControl {
 public:
@@ -22,20 +18,19 @@ public:
     double getTargetTemperature();
     double getCurrentTemperature();
 
-
 private:
     uint8_t heaterPin;
     bool heaterStatus;
     uint32_t autoDisableTime;
     uint32_t lastEnabledTime;
+    uint32_t lastToggleTime; // Track the last time the heater was toggled
     double targetTemperature;
     double currentTemperature;
-
-    // PID variables
-    double pidInput;     // Current temperature from thermocouple
-    double pidOutput;    // PID output (used to control heater)
-    double pidSetpoint;  // Target temperature
-    PID pid;             // PID object
+    // Hysteresis band to prevent rapid toggling
+    // The heater turns on when the temperature is below (targetTemperature - hysteresis).
+    // The heater turns off when the temperature is above (targetTemperature + hysteresis).
+    double hysteresis;
+    uint32_t toggleDelay; // Minimum delay between toggles (in milliseconds)
 };
 
 #endif

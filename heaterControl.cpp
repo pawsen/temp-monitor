@@ -1,22 +1,13 @@
 #include "heaterControl.h"
 
-// PID Tuning Parameters
-#define KP 2.0
-#define KI 5.0
-#define KD 1.0
-
-/* The init() method is used to handle initialization that cannot/should not be
-** done in the constructor. This allows to separate object creation and hardware
-** initialization.
-*/
-
 // Constructor
 HeaterControl::HeaterControl(uint8_t heaterPin)
     : heaterPin(heaterPin), heaterStatus(false),
       autoDisableTime(12UL * 60UL * 60UL * 1000UL), // Default to 12 hours
-      lastEnabledTime(0), targetTemperature(0.0), pidInput(0.0), pidOutput(0.0),
-      pidSetpoint(0.0),
-      pid(&pidInput, &pidOutput, &pidSetpoint, KP, KI, KD, DIRECT) {}
+      lastEnabledTime(0), lastToggleTime(0), targetTemperature(0.0),
+      currentTemperature(0.0), hysteresis(2.0), // Hysteresis band of ±2°C
+      toggleDelay(5000) // Minimum delay of 5 seconds between toggles
+{}
 
 // Initialize the heater control
 void HeaterControl::init() {
@@ -24,29 +15,31 @@ void HeaterControl::init() {
   heaterStatus = false;
   pinMode(heaterPin, OUTPUT);
   digitalWrite(heaterPin, LOW);
-
-  // Initialize the PID controller
-  pid.SetMode(AUTOMATIC);
-  pid.SetOutputLimits(0, 255); // Control output range (e.g., PWM 0-255)
 }
 
-// Update heater state based on current temperature and PID logic
+// Update heater state based on current temperature
 void HeaterControl::update(double _currentTemperature) {
   currentTemperature = _currentTemperature;
-  if (heaterStatus == false) {
+
+  // Check if the heater is enabled
+  if (!heaterStatus) {
     return;
   }
-  pidInput = currentTemperature;
-  pidSetpoint = targetTemperature;
 
-  // Compute the PID output
-  pid.Compute();
+  // Check if the minimum toggle delay has passed
+  if (millis() - lastToggleTime < toggleDelay) {
+    return; // Skip updating if the delay hasn't passed
+  }
 
-  // Heater control logic (simple on/off using PID output)
-  if (pidOutput > 0) {
+  // Simple on/off control with hysteresis
+  if (currentTemperature < (targetTemperature - hysteresis)) {
+    // Turn the heater on if the temperature is below the lower threshold
     digitalWrite(heaterPin, HIGH);
-  } else {
+    lastToggleTime = millis(); // Update the last toggle time
+  } else if (currentTemperature > (targetTemperature + hysteresis)) {
+    // Turn the heater off if the temperature is above the upper threshold
     digitalWrite(heaterPin, LOW);
+    lastToggleTime = millis(); // Update the last toggle time
   }
 
   // Auto-disable the heater after the timeout period
@@ -71,12 +64,14 @@ void HeaterControl::disable() {
   digitalWrite(heaterPin, LOW);
 }
 
+// Toggle the heater state
 void HeaterControl::toggleHeater() {
   Serial.println(F("Toggling heaterStatus"));
-  if (heaterStatus)
+  if (heaterStatus) {
     disable();
-  else
+  } else {
     enable();
+  }
 }
 
 // Return heater status
@@ -90,18 +85,18 @@ uint32_t HeaterControl::getTimeUntilDisable() {
   return (elapsed < autoDisableTime) ? (autoDisableTime - elapsed) : 0;
 }
 
+// Set the time until auto-disable
 void HeaterControl::setTimeUntilDisable(uint32_t time) {
   autoDisableTime = millis() + time;
 }
 
-
 // Set a new target temperature
 void HeaterControl::setTargetTemperature(double targetTemp) {
   targetTemperature = targetTemp;
-  pidSetpoint = targetTemp; // Update the PID setpoint
 }
 
 // Get the current target temperature
 double HeaterControl::getTargetTemperature() { return targetTemperature; }
 
+// Get the current temperature
 double HeaterControl::getCurrentTemperature() { return currentTemperature; }
