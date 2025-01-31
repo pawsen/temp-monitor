@@ -1,18 +1,5 @@
 #include "menu.h"
 
-// Menu menu;
-
-// void Menu::init(uint8_t ENCODER_PIN_A, uint8_t ENCODER_PIN_B, uint8_t
-// ENCODER_BUTTON_PIN) {
-//  this->ENCODER_PIN_A = ENCODER_PIN_A;
-//  this->ENCODER_PIN_B = ENCODER_PIN_B;
-//  this->ENCODER_BUTTON_PIN = ENCODER_BUTTON_PIN;
-//  Serial.print("enc pin");
-//  Serial.println(this->ENCODER_BUTTON_PIN);
-//   pinMode(this->ENCODER_BUTTON_PIN, INPUT_PULLUP);
-//   Encoder encoder(this->ENCODER_PIN_A, this->ENCODER_PIN_B);
-// }
-
 // Constructor with member initializer list for the encoder
 Menu::Menu(uint8_t ENCODER_PIN_A, uint8_t ENCODER_PIN_B,
            uint8_t ENCODER_BUTTON_PIN)
@@ -22,7 +9,7 @@ Menu::Menu(uint8_t ENCODER_PIN_A, uint8_t ENCODER_PIN_B,
 // Initialize button pin and any other hardware
 void Menu::init() {
   pinMode(ENCODER_BUTTON_PIN, INPUT_PULLUP);
-  Serial.println("Menu initialized.");
+  Serial.println(F("Menu initialized."));
 }
 
 void Menu::update() {
@@ -56,7 +43,7 @@ void Menu::update() {
       // Only handle a short press if no long press was detected
       if (!longPressHandled) {
         if ((currentTime - lastButtonPress) >= 200) { // Short press detected
-          Serial.println("Menu is active");
+          Serial.println(F("Menu is active"));
           menuActive = true; // Activate the menu
           displayMenu();
         }
@@ -99,7 +86,7 @@ void Menu::handleMenuNavigation() {
 void Menu::handleLongPress() {
   // Toggle the heater on/off
   if (menuActive) {
-    Serial.println("Exiting menu...");
+    Serial.println(F("Exiting menu..."));
     menuActive = false;
     lcd.clear();
   } else {
@@ -117,19 +104,19 @@ void Menu::displayMenu() {
 
     switch (currentMenuIndex) {
     case 0:
-      lcd.print("Target Temp");
+      lcd.print(F("Target Temp"));
       lcd.setCursor(0, 1);
       lcd.print(heaterControl.getTargetTemperature(), 1);
-      lcd.print(" C");
+      lcd.print(F(" C"));
       break;
     case 1:
-      lcd.print("Current Temp:");
+      lcd.print(F("Current Temp:"));
       lcd.setCursor(0, 1);
       lcd.print(heaterControl.getCurrentTemperature(), 1);
-      lcd.print(" C");
+      lcd.print(F(" C"));
       break;
     case 2:
-      lcd.print("Heater: ");
+      lcd.print(F("Heater: "));
       lcd.setCursor(0, 1);
       lcd.print(heaterControl.getHeaterStatus() ? "ON" : "OFF");
       break;
@@ -139,51 +126,39 @@ void Menu::displayMenu() {
       uint32_t minutes =
           (autoDisableTime % 3600000) / 60000; // Calculate remaining minutes
 
-      lcd.print("Set Auto-Disable");
+      lcd.print(F("Auto-Disable"));
       lcd.setCursor(0, 1);
-      lcd.print("                "); // Clear the line
+      lcd.print(F("                ")); // Clear the line
       lcd.setCursor(0, 1);
       lcd.print(hours);
-      lcd.print("h ");
+      lcd.print(F("h "));
       lcd.print(minutes);
-      lcd.print("m");
+      lcd.print(F("m"));
       break;
     }
   }
 }
 
 void Menu::selectMenuItem() {
+  // do the task. If the menu is "read only", like current temp, do nothing.
   switch (currentMenuIndex) {
   case 0: // Set Target Temp
     adjustTargetTemperature();
     break;
-
   case 1: // View Temp
-    lcd.clear();
-    lcd.print("Current Temp:");
-    lcd.setCursor(0, 1);
-    lcd.print(heaterControl.getCurrentTemperature(), 1);
-    lcd.print(" C");
     break;
-
   case 2: // View Heater Status
-    lcd.clear();
-    lcd.print("Heater Status:");
-    lcd.setCursor(0, 1);
-    lcd.print(heaterControl.getHeaterStatus() ? "ON" : "OFF");
     break;
-
   case 3: // Set Auto-Disable Time
     adjustAutoDisable();
     break;
-
   default:
     // Handle unexpected cases (e.g., invalid menu index)
-    Serial.println("Invalid menu index!");
+    Serial.println(F("Invalid menu index!"));
     break;
   }
 
-  Serial.println("existing selectMenuItem");
+  Serial.println(F("existing selectMenuItem"));
   // Keep the menu active after selecting a menu item unless it exits to the
   // main loop
   menuActive = false;
@@ -193,14 +168,14 @@ void Menu::selectMenuItem() {
 void Menu::adjustTargetTemperature() {
   lcd.clear();
   lcd.setCursor(0, 0);
-  lcd.print("Set Target Temp");
+  lcd.print(F("Set Target Temp"));
 
   double targetTemp = heaterControl.getTargetTemperature();
   lcd.setCursor(0, 1);
   lcd.print(targetTemp, 1); // Print with 1 decimal precision
-  lcd.print(" C");
+  lcd.print(F(" C"));
 
-  long encoderPos = encoder.read(); // Initial encoder position
+  long encoderPos = encoder.read();
   bool adjusting = true;
 
   // Wait for button release to avoid immediate exit
@@ -217,10 +192,10 @@ void Menu::adjustTargetTemperature() {
 
       // Update the display
       lcd.setCursor(0, 1);
-      lcd.print("                "); // Clear the line
+      lcd.print(F("                ")); // Clear the line
       lcd.setCursor(0, 1);
       lcd.print(targetTemp, 1);
-      lcd.print(" C");
+      lcd.print(F(" C"));
     }
 
     int buttonState = digitalRead(ENCODER_BUTTON_PIN);
@@ -242,7 +217,7 @@ void Menu::adjustTargetTemperature() {
 void Menu::adjustAutoDisable() {
   lcd.clear();
   lcd.setCursor(0, 0);
-  lcd.print("Set Auto-Disable");
+  lcd.print(F("Set Auto-Disable"));
 
   uint32_t autoDisableTime = heaterControl.getTimeUntilDisable();
   long encoderPos = encoder.read();
@@ -273,12 +248,12 @@ void Menu::adjustAutoDisable() {
           (autoDisableTime % 3600000) / 60000; // Calculate remaining minutes
 
       lcd.setCursor(0, 1);
-      lcd.print("                "); // Clear the line
+      lcd.print(F("                ")); // Clear the line
       lcd.setCursor(0, 1);
       lcd.print(hours);
-      lcd.print("h ");
+      lcd.print(F("h "));
       lcd.print(minutes);
-      lcd.print("m");
+      lcd.print(F("m"));
     }
 
     // Read the button state
@@ -309,14 +284,14 @@ void Menu::displayDefaultScreen(double currentTemp, double targetTemp) {
   // Update the LCD only if the temperature values have changed
   if (currentTemp != lastCurrentTemp || targetTemp != lastTargetTemp) {
     lcd.setCursor(0, 0);
-    lcd.print("Target: ");
+    lcd.print(F("Target: "));
     lcd.print(targetTemp, 1);
-    lcd.print(" C   "); // Add spaces to overwrite any previous text
+    lcd.print(F(" C   ")); // Add spaces to overwrite any previous text
 
     lcd.setCursor(0, 1);
-    lcd.print("Current: ");
+    lcd.print(F("Current: "));
     lcd.print(currentTemp, 1);
-    lcd.print(" C   "); // Add spaces to overwrite any previous text
+    lcd.print(F(" C   ")); // Add spaces to overwrite any previous text
 
     // lcd.setCursor(0, 2);
     // lcd.print("Heater: ");

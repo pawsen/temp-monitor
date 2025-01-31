@@ -7,7 +7,7 @@
     let
       supportedSystems =
         [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
-			# Helper to provide system-specific attributes
+      # Helper to provide system-specific attributes
       forEachSupportedSystem = f:
         nixpkgs.lib.genAttrs supportedSystems
         (system: f { pkgs = import nixpkgs { inherit system; }; });
@@ -19,10 +19,14 @@
         }
 
           {
-
-            # The Nix packages provided in the environment
+            name = "temp-monitor";
+            venvDir = "./.venv";
             packages = with pkgs; [
-              (python3.withPackages (ps: with ps; [ pyserial ]))
+              (python3.withPackages
+                (ps: with ps; [ pyserial matplotlib ipython ]))
+              # for using pip
+              python3Packages.venvShellHook
+
               arduino-core-unwrapped
               arduino-mk
               # use tio instead of screen, tio -b 9600 /dev/ttyUSB0
@@ -31,7 +35,7 @@
               screen
             ];
 
-            # buildInputs = with pkgs; [];
+            buildInputs = with pkgs; [ ];
 
             # Set any environment variables for your dev shell
             env = {
@@ -42,8 +46,8 @@
             };
 
             # Add any shell logic you want executed any time the environment is activated
-            shellHook = ''
-						'';
+            postVenvCreation = "";
+            postShellHook = "";
           };
       });
     };

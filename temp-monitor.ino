@@ -59,6 +59,12 @@ void displayError(Log& logger) {
   delay(2000);
 }
 
+float getTemperature() {
+  int status = thermoCouple.read();
+  if (status != STATUS_OK) {Serial.println(F("ThermoCouple ERROR!"));}
+  return thermoCouple.getTemperature();
+}
+
 void setup() {
   Serial.begin(115200);
 
@@ -73,10 +79,8 @@ void setup() {
   thermoCouple.begin();
   Serial.print("Thermocouple ");
   Serial.print(": ");
-  int status = thermoCouple.read();
-  if (status != STATUS_OK) {Serial.println(F("ThermoCouple ERROR!"));}
-  float temp = thermoCouple.getTemperature();
-  Serial.println(temp);
+  float currentTemp = getTemperature();
+  Serial.println(currentTemp);
 
   // Initialize the heater control
   heaterControl.init();
@@ -91,19 +95,24 @@ void setup() {
     displayError(logger);
   if (logger.openNewLogFile() != 0)
     displayError(logger);
+  else{
+    lcd.setCursor(0, 0);
+    lcd.print(F("logging to"));
+    lcd.setCursor(0, 1);
+    lcd.print(logger.getLogFileName());
+  }
 
   // Initialize the rotary encoder menu
   menu.init();
+
+  delay(2000);
 }
 
 void loop() {
   // Update the menu, handle button presses and rotary encoder inputs
   menu.update();
 
-  int status = thermoCouple.read();
-  if (status != STATUS_OK) {Serial.println(F("ThermoCouple ERROR!"));}
-  float currentTemp = thermoCouple.getTemperature();
-
+  float currentTemp = getTemperature();
   // Update the heater control logic using the first thermocouple as input
   heaterControl.update(currentTemp);
 
@@ -133,8 +142,14 @@ void loop() {
 
   double temperatures[NUM_THERMOCOUPLES] = {(double) currentTemp};
   // Log the current temperatures and heater status to the SD card
-  logger.logData(temperatures, heaterStatus);
+  if (logger.logData(temperatures, heaterStatus) != 0)
+    displayError(logger);
+
   // Periodically flush the log file to ensure data is saved
-  // logger.flushLogFile();
+  static uint8_t logCount = 0;
+  if (++logCount >= 10) {
+    logger.flushLogFile();
+    logCount = 0;
+  }
   delay(1000);
 }

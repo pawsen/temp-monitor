@@ -51,14 +51,14 @@ void HeaterControl::update(double _currentTemperature) {
 
   // Auto-disable the heater after the timeout period
   if (heaterStatus && millis() - lastEnabledTime >= autoDisableTime) {
-    Serial.println("auto disable");
+    Serial.println(F("auto disable"));
     disable();
   }
 }
 
 // Enable the heater and reset the auto-disable timer
 void HeaterControl::enable() {
-  Serial.println("heater is on");
+  Serial.println(F("heater is on"));
   heaterStatus = true;
   lastEnabledTime = millis();
   digitalWrite(heaterPin, HIGH);
@@ -66,13 +66,13 @@ void HeaterControl::enable() {
 
 // Disable the heater
 void HeaterControl::disable() {
-  Serial.println("heater is off");
+  Serial.println(F("heater is off"));
   heaterStatus = false;
   digitalWrite(heaterPin, LOW);
 }
 
 void HeaterControl::toggleHeater() {
-  Serial.println("Toggling heaterStatus");
+  Serial.println(F("Toggling heaterStatus"));
   if (heaterStatus)
     disable();
   else
