@@ -50,14 +50,6 @@ Log logger(ThermoCouplesNum );
 Menu menu(ENCODER_PIN_A, ENCODER_PIN_B, ENCODER_BUTTON_PIN);
 MAX6675 thermoCouple(MAX6675_CS_PINS[0], SPI_MISO_PIN , SPI_SCK_PIN);
 
-void displayError(Log& logger) {
-  // Retrieve and display the error message
-  Serial.println(logger.getErrorMessage());
-  lcd.clear();
-  lcd.setCursor(0, 0);
-  lcd.print(logger.getErrorMessage());
-  delay(2000);
-}
 
 float getTemperature() {
   int status = thermoCouple.read();

@@ -62,6 +62,10 @@ public:
   bool isFileSizeExceeded();
   const char *getErrorMessage() const { return errorMessage; }
   const char *getLogFileName() const {return logFileName; }
+  bool isLoggingEnabled() const { return loggingEnabled; }
+  int toggleLogging();
+  int enableLogging();
+  int disableLogging();
 
 private:
   uint8_t numSensors;   // Number of thermocouples
@@ -69,6 +73,7 @@ private:
   size_t bufferIndex;   // Current index in the write buffer
   uint8_t *writeBuffer; // Write buffer to reduce SD card writes
   bool loggingEnabled;  // Flag to indicate whether logging is enabled
+  uint8_t _SD_CS_PIN;   // CS pin for SD reader
 
   sd_t sd;        // SdFat object
   file_t logFile; // SdFile object for the log file

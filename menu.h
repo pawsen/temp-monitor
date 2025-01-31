@@ -2,17 +2,15 @@
 #define MENU_H
 
 #include "heaterControl.h"
+#include "log.h"
+
 #include <Arduino.h>
 #include <Encoder.h>
-// #include "lcd.h"
-
 #include <I2C_LCD.h>
 
 class Menu {
 public:
     Menu(uint8_t ENCODER_PIN_A, uint8_t ENCODER_PIN_B, uint8_t ENCODER_BUTTON_PIN);
-  // void init(uint8_t ENCODER_PIN_A, uint8_t ENCODER_PIN_B,
-  //           uint8_t ENCODER_BUTTON_PIN);
     void init();
   void update();
     void displayDefaultScreen(double currentTemp, double targetTemp);
@@ -25,7 +23,7 @@ private:
   unsigned long lastButtonPress = 0;
   unsigned long lastButtonRelease = 0;
   bool buttonPressed = false;
-bool longPressHandled = false;
+  bool longPressHandled = false;
 
   void handleMenuNavigation();
   void selectMenuItem();
@@ -42,5 +40,7 @@ bool longPressHandled = false;
 extern HeaterControl heaterControl;
 extern Menu menu;
 extern I2C_LCD lcd;
+extern Log logger;
 
+void displayError(Log& logger);
 #endif

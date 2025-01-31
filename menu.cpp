@@ -60,11 +60,11 @@ void Menu::handleMenuNavigation() {
   if (encoderPos != lastEncoderPos) {
     if (encoderPos > lastEncoderPos) { // Encoder rotated clockwise
       currentMenuIndex =
-          (currentMenuIndex + 1) % 4; // Move to the next menu item
+          (currentMenuIndex + 1) % 5; // Move to the next menu item
     } else if (encoderPos <
                lastEncoderPos) { // Encoder rotated counterclockwise
       currentMenuIndex =
-          (currentMenuIndex - 1 + 4) % 4; // Move to the previous menu item
+          (currentMenuIndex - 1 + 5) % 5; // Move to the previous menu item
     }
     lastEncoderPos = encoderPos; // Update the last known encoder position
     displayMenu();               // Refresh the menu display
@@ -120,7 +120,8 @@ void Menu::displayMenu() {
       lcd.setCursor(0, 1);
       lcd.print(heaterControl.getHeaterStatus() ? "ON" : "OFF");
       break;
-    case 3:
+    case 3: {
+      // Wrap the case block in curly braces to limit the scope of variables
       uint32_t autoDisableTime = heaterControl.getTimeUntilDisable();
       uint32_t hours = autoDisableTime / 3600000; // Calculate hours
       uint32_t minutes =
@@ -134,6 +135,14 @@ void Menu::displayMenu() {
       lcd.print(F("h "));
       lcd.print(minutes);
       lcd.print(F("m"));
+      break;
+    }
+    case 4:
+      lcd.print(F("Logging: "));
+      lcd.setCursor(0, 1);
+      lcd.print(logger.getLogFileName());
+      lcd.setCursor(0, 2);
+      lcd.print(logger.isLoggingEnabled() ? "ON" : "OFF");
       break;
     }
   }
@@ -151,6 +160,10 @@ void Menu::selectMenuItem() {
     break;
   case 3: // Set Auto-Disable Time
     adjustAutoDisable();
+    break;
+  case 4: // change logging status
+    if (logger.toggleLogging() != 0)
+      displayError(logger);
     break;
   default:
     // Handle unexpected cases (e.g., invalid menu index)
@@ -299,4 +312,13 @@ void Menu::displayDefaultScreen(double currentTemp, double targetTemp) {
     lastCurrentTemp = currentTemp;
     lastTargetTemp = targetTemp;
   }
+}
+
+// Retrieve and display logger error message
+void displayError(Log &logger) {
+  Serial.println(logger.getErrorMessage());
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print(logger.getErrorMessage());
+  delay(2000);
 }

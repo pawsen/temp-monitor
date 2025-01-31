@@ -11,6 +11,7 @@ Log::Log(uint8_t numSensors, size_t bufferSize)
   data.temperatures = new double[numSensors];
   memset(data.temperatures, 0, numSensors * sizeof(double));
   memset(errorMessage, 0, sizeof(errorMessage));
+  memset(logFileName, 0, sizeof(logFileName));
   writeBuffer = new uint8_t[bufferSize];
 }
 
@@ -20,7 +21,21 @@ Log::~Log() {
 }
 
 int Log::init(uint8_t SD_CS_PIN) {
-  if (!sd.begin(SD_CS_PIN, SD_SCK_MHZ(25))) {
+  _SD_CS_PIN = SD_CS_PIN;
+
+#if USE_RTC
+#ifdef ARDUINO_ARCH_ESP8266
+  URTCLIB_WIRE.begin(0, 2); // D3 and D4 on ESP8266
+#else
+  URTCLIB_WIRE.begin();
+#endif
+#endif // USE_RTC
+
+  return enableLogging();
+}
+
+int Log::enableLogging(){
+  if (!sd.begin(_SD_CS_PIN, SD_SCK_MHZ(25))) {
     loggingEnabled = false;
     strcpy_P(errorMessage, PSTR("SD card init failed"));
     return -1;
@@ -29,12 +44,6 @@ int Log::init(uint8_t SD_CS_PIN) {
   Serial.println(F("SD card initialized."));
 
 #if USE_RTC
-#ifdef ARDUINO_ARCH_ESP8266
-  URTCLIB_WIRE.begin(0, 2); // D3 and D4 on ESP8266
-#else
-  URTCLIB_WIRE.begin();
-#endif
-
   rtc.refresh();
   printRTCTime();
 
@@ -46,9 +55,28 @@ int Log::init(uint8_t SD_CS_PIN) {
   // FsDateTime::setCallback(SdFat_dateTime);
 #else
   logFileName = "TempLog_00.bin";
-#endif
-
+#endif // USE_RTC
   return 0;
+}
+
+int Log::disableLogging() {
+    if (loggingEnabled) {
+        // Flush any remaining data and close the log file
+        flushLogFile();
+        logFile.close();
+        loggingEnabled = false;
+        Serial.println(F("Logging disabled."));
+    }
+    return 0;
+}
+
+int Log::toggleLogging() {
+  Serial.println(F("Toggling logging"));
+  if (loggingEnabled) {
+    return disableLogging();
+  } else {
+    return enableLogging();
+  }
 }
 
 int Log::openNewLogFile() {
