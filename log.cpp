@@ -1,24 +1,20 @@
 // log.cpp
 #include "log.h"
 
-Log::Log(uint8_t numSensors, size_t bufferSize)
-    : numSensors(numSensors), bufferSize(bufferSize), bufferIndex(0),
-      writeBuffer(nullptr), loggingEnabled(false)
+Log::Log(uint8_t numSensors)
+    : numSensors(numSensors), loggingEnabled(false)
 #if USE_RTC
-      , rtc(RTC_ADDRESS, RTC_MODEL) // Initialize the RTC object here
-#endif // USE_RTC
+      ,
+      rtc(RTC_ADDRESS, RTC_MODEL) // Initialize the RTC object here
+#endif                            // USE_RTC
 {
   data.temperatures = new double[numSensors];
   memset(data.temperatures, 0, numSensors * sizeof(double));
   memset(errorMessage, 0, sizeof(errorMessage));
   memset(logFileName, 0, sizeof(logFileName));
-  writeBuffer = new uint8_t[bufferSize];
 }
 
-Log::~Log() {
-  delete[] data.temperatures;
-  delete[] writeBuffer;
-}
+Log::~Log() { delete[] data.temperatures; }
 
 int Log::init(uint8_t SD_CS_PIN) {
   _SD_CS_PIN = SD_CS_PIN;
@@ -34,7 +30,7 @@ int Log::init(uint8_t SD_CS_PIN) {
   return enableLogging();
 }
 
-int Log::enableLogging(){
+int Log::enableLogging() {
   if (!sd.begin(_SD_CS_PIN, SD_SCK_MHZ(25))) {
     loggingEnabled = false;
     strcpy_P(errorMessage, PSTR("SD card init failed"));
@@ -49,8 +45,9 @@ int Log::enableLogging(){
 
   // initialize log filename. Increment the last two 00 if the log file gets
   // full and a new is opened, but keep the initial time stamp
-  snprintf(logFileName, sizeof(logFileName), "TempLog_%02d%02d%02d_%02d%02d%02d_00.bin",
-           rtc.year(), rtc.month(), rtc.day(), rtc.hour(), rtc.minute(), rtc.second());
+  snprintf(logFileName, sizeof(logFileName),
+           "TempLog_%02d%02d%02d_%02d%02d%02d_00.bin", rtc.year(), rtc.month(),
+           rtc.day(), rtc.hour(), rtc.minute(), rtc.second());
   // Set callback. Used to set file timestamps
   // FsDateTime::setCallback(SdFat_dateTime);
 #else
@@ -60,14 +57,13 @@ int Log::enableLogging(){
 }
 
 int Log::disableLogging() {
-    if (loggingEnabled) {
-        // Flush any remaining data and close the log file
-        flushLogFile();
-        logFile.close();
-        loggingEnabled = false;
-        Serial.println(F("Logging disabled."));
-    }
-    return 0;
+  if (loggingEnabled && logFile.isOpen()) {
+    logFile.truncate();
+    logFile.close();
+    loggingEnabled = false;
+    Serial.println(F("Logging disabled."));
+  }
+  return 0;
 }
 
 int Log::toggleLogging() {
@@ -80,7 +76,8 @@ int Log::toggleLogging() {
 }
 
 int Log::openNewLogFile() {
-  if (!loggingEnabled) return 0;
+  if (!loggingEnabled)
+    return 0;
   logFile.close();
 
   while (sd.exists(logFileName)) {
@@ -121,7 +118,8 @@ int Log::openNewLogFile() {
 }
 
 void Log::writeHeader() {
-  if (!loggingEnabled) return;
+  if (!loggingEnabled)
+    return;
 
   uint32_t timestamp = getCurrentTimestamp();
   logFile.write("HEADER\n", 7);
@@ -131,55 +129,52 @@ void Log::writeHeader() {
 }
 
 int Log::logData(double *temperatures, bool heaterStatus) {
-  if (!loggingEnabled) return 0;
+  if (!loggingEnabled)
+    return 0;
 
   if (isFileSizeExceeded()) {
+    logFile.truncate();
     logFile.close();
     int ret = openNewLogFile();
-    if (ret != 0) return ret;
+    if (ret != 0)
+      return ret;
   }
 
   memcpy(data.temperatures, temperatures, numSensors * sizeof(double));
   data.heaterStatus = heaterStatus;
   data.timestamp = getCurrentTimestamp();
 
-  size_t dataSize = sizeof(double) * numSensors + sizeof(bool) + sizeof(uint32_t);
-  if (bufferIndex + dataSize > bufferSize) {
-    flushBuffer();
-  }
+  // Write the data directly to the SD card
+  logFile.write(data.temperatures, sizeof(double) * numSensors);
+  logFile.write(&data.heaterStatus, sizeof(bool));
+  logFile.write(&data.timestamp, sizeof(uint32_t));
 
-  memcpy(writeBuffer + bufferIndex, data.temperatures, sizeof(double) * numSensors);
-  bufferIndex += sizeof(double) * numSensors;
-  memcpy(writeBuffer + bufferIndex, &data.heaterStatus, sizeof(bool));
-  bufferIndex += sizeof(bool);
-  memcpy(writeBuffer + bufferIndex, &data.timestamp, sizeof(uint32_t));
-  bufferIndex += sizeof(uint32_t);
-
-  return 0;
-}
-
-void Log::flushBuffer() {
-  if (bufferIndex > 0) {
-    logFile.write(writeBuffer, bufferIndex);
-    bufferIndex = 0;
+  // Sync the data to the SD card periodically
+  // The SdFat library maintains an internal buffer (usually 512 bytes, the size
+  // of an SD card block). When you call logFile.write(data), the data is first
+  // written to this internal buffer. The library only writes the data to the SD
+  // card when:
+  // - The internal buffer is full
+  // - You explicitly call logFile.sync() or logFile.close(). (and maybe
+  // flush()) The reason for calling sync() is to prevent data loss.
+  static uint32_t lastSyncTime = 0;
+  if (millis() - lastSyncTime > 1000UL * 60) { // Sync every 1s * 60
     logFile.sync();
+    lastSyncTime = millis();
   }
+  return 0;
 }
 
 bool Log::isFileSizeExceeded() {
   return loggingEnabled && logFile.fileSize() > PREALLOCATE_SIZE_MiB;
 }
 
-void Log::flushLogFile() {
-  if (!loggingEnabled) return;
-  flushBuffer();
-}
-
 uint32_t Log::getCurrentTimestamp() {
   uint32_t timestamp;
 #if USE_RTC
   rtc.refresh(); // Refresh the RTC to get the latest time
-  timestamp = encodeTimestamp(rtc.year(), rtc.month(), rtc.day(), rtc.hour(), rtc.minute(), rtc.second());
+  timestamp = encodeTimestamp(rtc.year(), rtc.month(), rtc.day(), rtc.hour(),
+                              rtc.minute(), rtc.second());
 #else
   timestamp = millis()
 #endif // USE_RTC
@@ -188,10 +183,10 @@ uint32_t Log::getCurrentTimestamp() {
 
 #if USE_RTC
 // Call back for file timestamps.  Only called for file create and sync().
-void Log::SdFat_dateTime(uint16_t* date, uint16_t* time, uint8_t* ms10) {
+void Log::SdFat_dateTime(uint16_t *date, uint16_t *time, uint8_t *ms10) {
   // Access the RTC object through a global or static instance
   // static uRTCLib rtc(RTC_ADDRESS, RTC_MODEL);
-  
+
   // // Return date using FS_DATE macro to format fields.
   // *date = FS_DATE(rtc.year(), rtc.month(), rtc.day());
   // // Return time using FS_TIME macro to format fields.
@@ -202,7 +197,8 @@ void Log::SdFat_dateTime(uint16_t* date, uint16_t* time, uint8_t* ms10) {
 }
 
 // Function to encode timestamp into uint32_t using bit packing
-uint32_t Log::encodeTimestamp(uint8_t year, uint8_t month, uint8_t day, uint8_t hour, uint8_t minute, uint8_t second) {
+uint32_t Log::encodeTimestamp(uint8_t year, uint8_t month, uint8_t day,
+                              uint8_t hour, uint8_t minute, uint8_t second) {
   /* Encode the timestamp YYMMDDHHMMSS.
   **
   **  uint32_t can store values up to 4294967295. A timestamp as YYMMDDHHMMSS
@@ -217,17 +213,18 @@ uint32_t Log::encodeTimestamp(uint8_t year, uint8_t month, uint8_t day, uint8_t 
   **  Minute (MM): 6 bits (0–59)
   **  Second (SS): 6 bits (0–59)
   **  Total: 6 + 4 + 5 + 5 + 6 + 6 = 32 bits
-    */
+  */
   return (static_cast<uint32_t>(year) << 26) |
          (static_cast<uint32_t>(month) << 22) |
          (static_cast<uint32_t>(day) << 17) |
          (static_cast<uint32_t>(hour) << 12) |
-         (static_cast<uint32_t>(minute) << 6) |
-         (static_cast<uint32_t>(second));
+         (static_cast<uint32_t>(minute) << 6) | (static_cast<uint32_t>(second));
 }
 
 // Function to decode uint32_t timestamp into individual components
-void Log::decodeTimestamp(uint32_t timestamp, uint8_t &year, uint8_t &month, uint8_t &day, uint8_t &hour, uint8_t &minute, uint8_t &second) {
+void Log::decodeTimestamp(uint32_t timestamp, uint8_t &year, uint8_t &month,
+                          uint8_t &day, uint8_t &hour, uint8_t &minute,
+                          uint8_t &second) {
   year = (timestamp >> 26) & 0x3F;
   month = (timestamp >> 22) & 0x0F;
   day = (timestamp >> 17) & 0x1F;

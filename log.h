@@ -18,6 +18,8 @@ const byte RTC_ADDRESS = 0x68;
 
 // SD_FAT_TYPE = 0 for SdFat/File as defined in SdFatConfig.h,
 // 1 for FAT16/FAT32, 2 for exFAT, 3 for FAT16/FAT32 and exFAT.
+//
+// XXX: 3 will probaly not work on Arduino Uno; too high progmem requirement.
 
 // Default SD_FAT_TYPE set to 1
 #ifndef SD_FAT_TYPE
@@ -49,7 +51,7 @@ struct LogData {
 
 class Log {
 public:
-  Log(uint8_t numSensors, size_t bufferSize = 50);
+  Log(uint8_t numSensors);
   ~Log();
 
   // Hardware initialization
@@ -57,8 +59,6 @@ public:
   int openNewLogFile();
   void writeHeader();
   int logData(double *temperatures, bool heaterStatus);
-  void flushLogFile();
-  void flushBuffer();
   bool isFileSizeExceeded();
   const char *getErrorMessage() const { return errorMessage; }
   const char *getLogFileName() const {return logFileName; }
@@ -69,11 +69,12 @@ public:
 
 private:
   uint8_t numSensors;   // Number of thermocouples
-  size_t bufferSize;    // Buffer size matching SD sector size
-  size_t bufferIndex;   // Current index in the write buffer
-  uint8_t *writeBuffer; // Write buffer to reduce SD card writes
   bool loggingEnabled;  // Flag to indicate whether logging is enabled
   uint8_t _SD_CS_PIN;   // CS pin for SD reader
+  // Preallocate 1GiB file.
+  const uint32_t PREALLOCATE_SIZE_MiB = 1024UL;
+  char errorMessage[50];
+  char logFileName[30]; // Buffer for the log file name
 
   sd_t sd;        // SdFat object
   file_t logFile; // SdFile object for the log file
@@ -92,11 +93,6 @@ private:
                        uint8_t &second);
   void printRTCTime();
 #endif // USE_RTC
-
-  // Preallocate 1GiB file.
-  const uint32_t PREALLOCATE_SIZE_MiB = 1024UL;
-  char errorMessage[50];
-  char logFileName[30]; // Buffer for the log file name
 };
 
 extern Log logger;

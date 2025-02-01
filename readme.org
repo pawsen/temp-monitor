@@ -226,3 +226,97 @@ void loop() {
     }
 }
 #+end_src
+*** notes
+How SdFat's Internal Buffering Works
+
+    Internal Buffer:
+
+        The SdFat library maintains an internal buffer (usually 512 bytes, the size of an SD card block).
+
+        When you call logFile.write(data), the data is first written to this internal buffer.
+
+        The library only writes the data to the SD card when:
+
+            The internal buffer is full.
+
+            You explicitly call logFile.sync() or logFile.close().
+
+    Advantages:
+
+        Reduces the number of actual SD card writes, which are relatively slow.
+
+        Improves performance by batching small writes into larger blocks.
+
+        Minimizes wear on the SD card by reducing the number of write operations.
+
+Why the ADC Logger Uses Its Own Buffer
+
+The ADC logger code uses an additional FIFO buffer for the following reasons:
+
+    High-Speed Data Acquisition:
+
+        The ADC logger is designed to sample data at very high rates (e.g., 5000 samples per second).
+
+        The ISR (Interrupt Service Routine) reads the ADC values and stores them in the FIFO buffer.
+
+        Without this buffer, the ISR would have to wait for the SD card write operation to complete, which could cause missed samples.
+
+    Decoupling Sampling and Writing:
+
+        The FIFO buffer decouples the data acquisition (handled by the ISR) from the data writing (handled by the main program).
+
+        This ensures that the ISR can continue sampling data even if the SD card write operations are slow.
+
+    Handling Overruns:
+
+        If the FIFO buffer fills up faster than it can be written to the SD card, the ISR can track overruns (missed samples).
+
+        This allows the program to detect and handle situations where the sampling rate exceeds the SD card's write speed.
+
+    Efficient Block Writes:
+
+        The FIFO buffer groups multiple samples into blocks before writing them to the SD card.
+
+        This reduces the number of calls to logFile.write() and allows the SdFat library to batch the writes into larger blocks.
+
+How the Two Buffers Work Together
+
+    ISR Fills the FIFO Buffer:
+
+        The ISR reads ADC values and stores them in the FIFO buffer.
+
+        If the buffer is full, the ISR increments the overrun counter and discards the sample.
+
+    Main Program Writes to SD Card:
+
+        The main program checks the FIFO buffer for new data.
+
+        When data is available, it writes the entire block to the SD card using logFile.write().
+
+        The SdFat library stores the data in its internal buffer and writes it to the SD card when the buffer is full or when sync() is called.
+
+    Efficient Data Flow:
+
+        The FIFO buffer ensures that the ISR can continue sampling data without waiting for SD card writes.
+
+        The SdFat library's internal buffer ensures that the data is written to the SD card in efficient blocks.
+
+When to Use an Additional Buffer
+
+You don't always need an additional buffer like the one in the ADC logger. Here are some guidelines:
+
+    Use an Additional Buffer If:
+
+        You are logging data at very high rates (e.g., thousands of samples per second).
+
+        You need to ensure that no samples are missed due to slow SD card writes.
+
+        Your logging involves time-critical tasks that cannot be delayed by SD card operations.
+
+    Rely on SdFat's Internal Buffer If:
+
+        Your logging rate is relatively low (e.g., a few samples per second).
+
+        You don't need precise timing for data acquisition.
+
+        You want to keep the code simple and avoid additional complexity.

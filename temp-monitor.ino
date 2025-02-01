@@ -139,11 +139,5 @@ void loop() {
   if (logger.logData(temperatures, heaterStatus) != 0)
     displayError(logger);
 
-  // Periodically flush the log file to ensure data is saved
-  static uint8_t logCount = 0;
-  if (++logCount >= 10) {
-    logger.flushLogFile();
-    logCount = 0;
-  }
   delay(1000);
 }
