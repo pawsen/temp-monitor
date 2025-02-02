@@ -31,6 +31,12 @@ void HeaterControl::update(double _currentTemperature) {
     return; // Skip updating if the delay hasn't passed
   }
 
+  // Auto-disable the heater after the timeout period
+  if (heaterStatus && millis() - lastEnabledTime >= autoDisableTime) {
+    Serial.println(F("auto disable"));
+    disable();
+  }
+
   // Simple on/off control with hysteresis
   if (currentTemperature < (targetTemperature - hysteresis)) {
     // Turn the heater on if the temperature is below the lower threshold
@@ -40,12 +46,6 @@ void HeaterControl::update(double _currentTemperature) {
     // Turn the heater off if the temperature is above the upper threshold
     digitalWrite(heaterPin, LOW);
     lastToggleTime = millis(); // Update the last toggle time
-  }
-
-  // Auto-disable the heater after the timeout period
-  if (heaterStatus && millis() - lastEnabledTime >= autoDisableTime) {
-    Serial.println(F("auto disable"));
-    disable();
   }
 }
 
@@ -60,6 +60,9 @@ void HeaterControl::enable() {
 // Disable the heater
 void HeaterControl::disable() {
   Serial.println(F("heater is off"));
+  // save the elapsed time so we can contiue from this time if heating is enabled again.
+  autoDisableTime -= millis() - lastEnabledTime;
+  lastEnabledTime = millis();
   heaterStatus = false;
   digitalWrite(heaterPin, LOW);
 }
