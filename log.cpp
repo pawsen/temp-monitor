@@ -56,7 +56,15 @@ int Log::enableLogging() {
   // disbale logging if something fails
   loggingEnabled = false;
 
-  if (!sd.begin(_SD_CS_PIN, SD_SCK_MHZ(25))) {
+#if ENABLE_DEDICATED_SPI
+  Serial.println(F("\nENABLE_DEDICATED_SPI is set"));
+#else
+  Serial.println(
+      F("\nFor best SD performance edit log.h"
+        "use dedicated SPI pins and set ENABLE_DEDICATED_SPI nonzero"));
+#endif  // !ENABLE_DEDICATED_SPI
+
+  if (!sd.begin(SD_CONFIG)) {
     strcpy_P(errorMessage, PSTR("SD card init failed"));
     return -1;
   }

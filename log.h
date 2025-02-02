@@ -42,6 +42,22 @@ typedef FsFile file_t;
 #error Invalid SD_FAT_TYPE
 #endif // SD_FAT_TYPE
 
+const uint8_t SD_CS_PIN = 4; // Chip Select for the SD card
+
+// Max SPI rate for AVR is 10 MHz for F_CPU 20 MHz, 8 MHz for F_CPU 16 MHz.
+#define SPI_CLOCK SD_SCK_MHZ(10)
+#ifdef ENABLE_DEDICATED_SPI
+#undef ENABLE_DEDICATED_SPI
+#endif
+#define ENABLE_DEDICATED_SPI 0
+
+// Select fastest interface.
+#if ENABLE_DEDICATED_SPI
+#define SD_CONFIG SdSpiConfig(SD_CS_PIN, DEDICATED_SPI, SPI_CLOCK)
+#else  // ENABLE_DEDICATED_SPI
+#define SD_CONFIG SdSpiConfig(SD_CS_PIN, SHARED_SPI, SPI_CLOCK)
+#endif  // ENABLE_DEDICATED_SPI
+
 struct LogData {
   uint32_t timestamp;
   float

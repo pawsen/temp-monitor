@@ -20,8 +20,9 @@ const uint8_t ENCODER_PIN_A = 2;
 const uint8_t ENCODER_PIN_B = 3;
 const uint8_t ENCODER_BUTTON_PIN = 5;
 
+/// XXX SD_CS_PIN is set in log.h
+// const uint8_t SD_CS_PIN = 4;
 const uint8_t HEATER_PIN = 6;
-const uint8_t SD_CS_PIN = 4; // Chip Select for the SD card
 // List of CS pins to disable
 // example, with the Ethernet shield, set DISABLE_CS_PIN to 10 to disable the
 // Ethernet controller.
@@ -53,7 +54,8 @@ I2C_LCD lcd(0x27);
 HeaterControl heaterControl(HEATER_PIN);
 Log logger(ThermoCouplesNum );
 Menu menu(ENCODER_PIN_A, ENCODER_PIN_B, ENCODER_BUTTON_PIN);
-MAX6675 thermoCouple(MAX6675_CS_PINS[0], SPI_MISO_PIN , SPI_SCK_PIN);
+// MAX6675 thermoCouple(MAX6675_CS_PINS[0], SPI_MISO_PIN , SPI_SCK_PIN);
+MAX6675 thermoCouple(MAX6675_CS_PINS[0], &SPI);
 
 
 float getTemperature() {
@@ -74,6 +76,8 @@ void setup() {
   // Initialize thermocouples
   SPI.begin();
   thermoCouple.begin();
+  // XXX I do not understand what setSPIspeed does or when it is needed.
+  thermoCouple.setSPIspeed(4000000);
   Serial.print("Thermocouple ");
   Serial.print(": ");
   float currentTemp = getTemperature();
