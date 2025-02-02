@@ -140,9 +140,10 @@ void Menu::displayMenu() {
     case 4:
       lcd.print(F("Logging: "));
       lcd.setCursor(0, 1);
-      lcd.print(logger.getLogFileName());
-      lcd.setCursor(0, 2);
-      lcd.print(logger.isLoggingEnabled() ? "ON" : "OFF");
+      if (logger.isLoggingEnabled()) {
+        lcd.print(logger.getLogFileName());
+      } else
+        lcd.print(logger.isLoggingEnabled() ? "ON" : "OFF");
       break;
     }
   }

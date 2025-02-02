@@ -2,7 +2,7 @@
 #include "log.h"
 
 Log::Log(uint8_t numSensors)
-    : numSensors(numSensors), loggingEnabled(false)
+    : numSensors(numSensors), loggingEnabled(false), loggingStartet(false)
 #if USE_RTC
       ,
       rtc(RTC_ADDRESS, RTC_MODEL) // Initialize the RTC object here
@@ -27,24 +27,13 @@ int Log::init(uint8_t SD_CS_PIN) {
 #endif
 #endif // USE_RTC
 
-  return enableLogging();
-}
-
-int Log::enableLogging() {
-  if (!sd.begin(_SD_CS_PIN, SD_SCK_MHZ(25))) {
-    loggingEnabled = false;
-    strcpy_P(errorMessage, PSTR("SD card init failed"));
-    return -1;
-  }
-  loggingEnabled = true;
-  Serial.println(F("SD card initialized."));
-
+  // initialize log filename. as either YYMMDD_hhmmss00.bin, if a RTC is
+  // present, or TempLog00.bin
+  // Increment the last two 00 if the log file gets full and a new is opened,
+  // but keep the initial time stamp
 #if USE_RTC
   rtc.refresh();
   printRTCTime();
-
-  // initialize log filename. Increment the last two 00 if the log file gets
-  // full and a new is opened, but keep the initial time stamp
   snprintf(logFileName, sizeof(logFileName),
            "TempLog_%02d%02d%02d_%02d%02d%02d_00.bin", rtc.year(), rtc.month(),
            rtc.day(), rtc.hour(), rtc.minute(), rtc.second());
@@ -53,25 +42,100 @@ int Log::enableLogging() {
 #else
   logFileName = "TempLog_00.bin";
 #endif // USE_RTC
+
+  return startLogging();
+}
+
+void Log::errorPrint(const __FlashStringHelper *msg) {
+  sd.errorPrint(&Serial, msg);
+  // strcpy_P(errorMessage, PSTR("No FAT partition."));
+  strcpy_P(errorMessage, (PGM_P)(msg));
+}
+
+int Log::enableLogging() {
+  // disbale logging if something fails
+  loggingEnabled = false;
+
+  if (!sd.begin(_SD_CS_PIN, SD_SCK_MHZ(25))) {
+    strcpy_P(errorMessage, PSTR("SD card init failed"));
+    return -1;
+  }
+  Serial.println(F("SD card initialized."));
+
+  if (!sd.vol()->fatType()) {
+    strcpy_P(errorMessage, PSTR("No FAT partition."));
+    return -1;
+  }
+  Serial.println(F("Found FAT partition."));
+
+#ifndef  USE_RTC
+  // if a file with logFileName already exists (ie. probably an old logfile),
+  // move it
+  if (!sd.exists(logFileName)) {
+    if (!sd.rename(logFileName, "TempLog_00.bin.bak")){
+      Serial.println(F("Error renaming old logfile"));
+      return -1;
+    }
+  }
+#endif // USE_RTC
+
+  loggingEnabled = true;
+  printSDInfo();
   return 0;
 }
 
-int Log::disableLogging() {
+bool Log::isLoggingEnabled() {
+  return logFile.isOpen();
+}
+
+void Log::printSDInfo(){
+  float volumesize, freesize;
+  uint32_t sectorsPerCluster = sd.vol()->sectorsPerCluster(); // Clusters are collections of sectors
+  volumesize = sectorsPerCluster * sd.vol()->clusterCount();  // We'll have a lot of clusters
+  volumesize /= 2 * 1000; // in MB. SD card sectors are always 512 bytes (2 sectors are 1 KB)
+  freesize =  sectorsPerCluster * (sd.vol()->freeClusterCount());
+  freesize /= 2 * 1000;
+  Serial.print(F("Size (MB):"));
+  Serial.println(volumesize);
+  Serial.print(F("Free (MB):"));
+  Serial.println(freesize);
+}
+
+int Log::startLogging() {
+  if (!loggingEnabled) enableLogging();
+  if (logFile.isOpen()) {
+    Serial.println(F("LogFile is already open. Unessecary call to startLoggign()"));
+    return 0;
+  }
+
+  if (sd.exists(logFileName)) {
+    if (!logFile.open(logFileName, O_RDWR | O_CREAT)) {
+      loggingEnabled = false;
+      Serial.println(F("Error opening already existing file"));
+    }
+    Serial.println(F("Logging started to already existing file"));
+    return 0;
+  } else {
+    Serial.println(F("Logging to new file"));
+    return openNewLogFile();
+  }
+}
+
+int Log::stopLogging() {
   if (loggingEnabled && logFile.isOpen()) {
     logFile.truncate();
     logFile.close();
-    loggingEnabled = false;
-    Serial.println(F("Logging disabled."));
+    Serial.println(F("Logging stopped."));
   }
   return 0;
 }
 
 int Log::toggleLogging() {
   Serial.println(F("Toggling logging"));
-  if (loggingEnabled) {
-    return disableLogging();
+  if (logFile.isOpen()) {
+    return stopLogging();
   } else {
-    return enableLogging();
+    return startLogging();
   }
 }
 

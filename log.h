@@ -56,22 +56,20 @@ public:
 
   // Hardware initialization
   int init(uint8_t SD_CS_PIN);
-  int openNewLogFile();
-  void writeHeader();
   int logData(double *temperatures, bool heaterStatus);
-  bool isFileSizeExceeded();
   const char *getErrorMessage() const { return errorMessage; }
   const char *getLogFileName() const {return logFileName; }
-  bool isLoggingEnabled() const { return loggingEnabled; }
+  bool isLoggingEnabled();
   int toggleLogging();
-  int enableLogging();
-  int disableLogging();
+  int startLogging();
+  int stopLogging();
 
 private:
   uint8_t numSensors;   // Number of thermocouples
   bool loggingEnabled;  // Flag to indicate whether logging is enabled
+  bool loggingStartet; // Flag to indicate if logging is startet
   uint8_t _SD_CS_PIN;   // CS pin for SD reader
-  // Preallocate 1GiB file.
+  // Preallocate 100MiB file, 1024UL * 1024UL * 100UL .
   const uint32_t PREALLOCATE_SIZE_MiB = 1024UL;
   char errorMessage[50];
   char logFileName[30]; // Buffer for the log file name
@@ -80,6 +78,12 @@ private:
   file_t logFile; // SdFile object for the log file
   LogData data;   // Struct to hold the data to be logged
 
+  int enableLogging();
+  bool isFileSizeExceeded();
+  int openNewLogFile();
+  void writeHeader();
+  void printSDInfo();
+  void errorPrint(const __FlashStringHelper* msg);
   uint32_t getCurrentTimestamp();
 #if USE_RTC
 

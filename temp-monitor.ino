@@ -87,7 +87,7 @@ void setup() {
 
   if (logger.init(SD_CS_PIN) != 0)
     displayError(logger);
-  if (logger.openNewLogFile() != 0)
+  if (logger.startLogging() != 0)
     displayError(logger);
   else{
     lcd.setCursor(0, 0);
