@@ -8,8 +8,8 @@ Log::Log(uint8_t numSensors)
       rtc(RTC_ADDRESS, RTC_MODEL) // Initialize the RTC object here
 #endif                            // USE_RTC
 {
-  data.temperatures = new double[numSensors];
-  memset(data.temperatures, 0, numSensors * sizeof(double));
+  data.temperatures = new float[numSensors];
+  memset(data.temperatures, 0, numSensors * sizeof(float));
   memset(errorMessage, 0, sizeof(errorMessage));
   memset(logFileName, 0, sizeof(logFileName));
 }
@@ -189,10 +189,15 @@ void Log::writeHeader() {
   logFile.write("HEADER\n", 7);
   logFile.write(&numSensors, sizeof(numSensors));
   logFile.write(&timestamp, sizeof(timestamp));
+
+  // Write the size of each temperature value (4 for float, 8 for double)
+  uint8_t tempSize = sizeof(float);
+  logFile.write(&tempSize, sizeof(tempSize));
+
   logFile.sync();
 }
 
-int Log::logData(double *temperatures, bool heaterStatus) {
+int Log::logData(float *temperatures, bool heaterStatus) {
   if (!loggingEnabled)
     return 0;
 
@@ -204,12 +209,12 @@ int Log::logData(double *temperatures, bool heaterStatus) {
       return ret;
   }
 
-  memcpy(data.temperatures, temperatures, numSensors * sizeof(double));
+  memcpy(data.temperatures, temperatures, numSensors * sizeof(float));
   data.heaterStatus = heaterStatus;
   data.timestamp = getCurrentTimestamp();
 
   // Write the data directly to the SD card
-  logFile.write(data.temperatures, sizeof(double) * numSensors);
+  logFile.write(data.temperatures, sizeof(float) * numSensors);
   logFile.write(&data.heaterStatus, sizeof(bool));
   logFile.write(&data.timestamp, sizeof(uint32_t));
 

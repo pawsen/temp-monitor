@@ -118,7 +118,7 @@ void loop() {
     // Update the heater control logic using the first thermocouple as input
     heaterControl.update(currentTemp);
 
-    double targetTemp = heaterControl.getTargetTemperature();
+    float targetTemp = heaterControl.getTargetTemperature();
 
     // Display default screen when menu is not active
     menu.displayDefaultScreen(currentTemp, targetTemp);
@@ -147,7 +147,7 @@ void loop() {
 
     previousMillis = currentMillis;
 
-    double temperatures[NUM_THERMOCOUPLES] = {(double) currentTemp};
+    float temperatures[NUM_THERMOCOUPLES] = { currentTemp};
     // Log the current temperatures and heater status to the SD card
     if (logger.logData(temperatures, heaterStatus) != 0)
       displayError(logger);

@@ -14,7 +14,7 @@ public:
     Menu(uint8_t ENCODER_PIN_A, uint8_t ENCODER_PIN_B, uint8_t ENCODER_BUTTON_PIN);
     void init();
   void update();
-    void displayDefaultScreen(double currentTemp, double targetTemp);
+    void displayDefaultScreen(float currentTemp, float targetTemp);
 
 private:
   Encoder encoder;

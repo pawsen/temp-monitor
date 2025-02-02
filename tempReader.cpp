@@ -15,7 +15,7 @@ void ThermocoupleReader::init(uint8_t numThermocouples, const uint8_t *csPins,
   nT = numThermocouples;
   // Allocate memory for thermocouples and temperatures
   thermocouples = new MAX6675 *[numThermocouples];
-  temperatures = new double[numThermocouples];
+  temperatures = new float[numThermocouples];
 
   // Initialize each thermocouple with the appropriate CS pin and shared
   // MISO/CLOCK pins
@@ -34,7 +34,7 @@ void ThermocoupleReader::init(uint8_t numThermocouples, const uint8_t *csPins,
   }
 }
 
-double *ThermocoupleReader::getTemperatures() {
+float *ThermocoupleReader::getTemperatures() {
 
   for (uint8_t i = 0; i < nT; i++) {
     // Debug output for each thermocouple

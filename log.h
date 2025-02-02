@@ -44,7 +44,7 @@ typedef FsFile file_t;
 
 struct LogData {
   uint32_t timestamp;
-  double
+  float
       *temperatures; // Pointer to dynamically allocated array for temperatures
   bool heaterStatus; // Heater status
 };
@@ -56,7 +56,7 @@ public:
 
   // Hardware initialization
   int init(uint8_t SD_CS_PIN);
-  int logData(double *temperatures, bool heaterStatus);
+  int logData(float *temperatures, bool heaterStatus);
   const char *getErrorMessage() const { return errorMessage; }
   const char *getLogFileName() const {return logFileName; }
   bool isLoggingEnabled();

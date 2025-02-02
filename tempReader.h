@@ -15,12 +15,12 @@ private:
 // const uint8_t SPI_MISO_PIN = 8;
 // const uint8_t SPI_SCK_PIN = 9;
     MAX6675** thermocouples;   // Array of pointers to MAX6675 objects
-    double* temperatures;      // Array to store temperature readings
+    float* temperatures;      // Array to store temperature readings
     uint8_t nT;                // Number of thermocouples
 
 public:
     void init( uint8_t numThermocouples, const uint8_t* csPins,uint8_t miso, uint8_t clock);
-    double* getTemperatures();
+    float* getTemperatures();
     ~ThermocoupleReader();  // Destructor to clean up allocated memory
 };
 
@@ -33,7 +33,7 @@ extern ThermocoupleReader thermocoupleReader;
   //                         SPI_SCK_PIN);
 
   // // Test readings
-  // double *temperatures = thermocoupleReader.getTemperatures();
+  // float *temperatures = thermocoupleReader.getTemperatures();
   // for (uint8_t i = 0; i < NUM_THERMOCOUPLES; i++) {
   //   Serial.print("Thermocouple ");
   //   Serial.print(i);
@@ -42,5 +42,5 @@ extern ThermocoupleReader thermocoupleReader;
   // }
 
   // Get the current temperatures from thermocouples
-  // double *temperatures = thermocoupleReader.getTemperatures();
-  // double currentTemp = temperatures[0];
+  // float *temperatures = thermocoupleReader.getTemperatures();
+  // float currentTemp = temperatures[0];

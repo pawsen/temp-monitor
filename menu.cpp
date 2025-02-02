@@ -34,7 +34,7 @@ void Menu::update() {
     if (bounce.currentDuration() > 1000) {
       Serial.println("long press");
       handleLongPress();
-      longPressHandled = true; // Prevent double execution
+      longPressHandled = true; // Prevent float execution
     }
   }
 
@@ -180,7 +180,7 @@ void Menu::adjustTargetTemperature() {
   lcd.setCursor(0, 0);
   lcd.print(F("Set Target Temp"));
 
-  double targetTemp = heaterControl.getTargetTemperature();
+  float targetTemp = heaterControl.getTargetTemperature();
   lcd.setCursor(0, 1);
   lcd.print(targetTemp, 1); // Print with 1 decimal precision
   lcd.print(F(" C"));
@@ -261,13 +261,13 @@ void Menu::adjustAutoDisable() {
   heaterControl.setTimeUntilDisable(autoDisableTime);
 }
 
-void Menu::displayDefaultScreen(double currentTemp, double targetTemp) {
+void Menu::displayDefaultScreen(float currentTemp, float targetTemp) {
   if (menuActive) {
     return; // Skip updating the default screen when the menu is active
   }
 
-  static double lastCurrentTemp = -999.0;
-  static double lastTargetTemp = -999.0;
+  static float lastCurrentTemp = -999.0;
+  static float lastTargetTemp = -999.0;
 
   // Update the LCD only if the temperature values have changed
   if (currentTemp != lastCurrentTemp || targetTemp != lastTargetTemp) {

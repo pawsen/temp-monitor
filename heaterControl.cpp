@@ -18,7 +18,7 @@ void HeaterControl::init() {
 }
 
 // Update heater state based on current temperature
-void HeaterControl::update(double _currentTemperature) {
+void HeaterControl::update(float _currentTemperature) {
   currentTemperature = _currentTemperature;
 
   // Check if the heater is enabled
@@ -99,12 +99,12 @@ void HeaterControl::setTimeUntilDisable(uint32_t time) {
 }
 
 // Set a new target temperature
-void HeaterControl::setTargetTemperature(double targetTemp) {
+void HeaterControl::setTargetTemperature(float targetTemp) {
   targetTemperature = targetTemp;
 }
 
 // Get the current target temperature
-double HeaterControl::getTargetTemperature() { return targetTemperature; }
+float HeaterControl::getTargetTemperature() { return targetTemperature; }
 
 // Get the current temperature
-double HeaterControl::getCurrentTemperature() { return currentTemperature; }
+float HeaterControl::getCurrentTemperature() { return currentTemperature; }

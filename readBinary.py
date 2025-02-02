@@ -1,90 +1,163 @@
-#!/usr/bin/env python3
-
 import struct
+from datetime import datetime
 import matplotlib.pyplot as plt
-import numpy as np
-
-# Define the structure of the LogHeader and LogData
-# LogHeader contains the number of sensors (uint8_t)
-# LogData contains a timestamp (unsigned long), temperatures (array of doubles), and relayState (bool)
-LOG_HEADER_FORMAT = 'B'  # 'B' is for unsigned char (1 byte for the number of sensors)
-LOG_DATA_FORMAT = 'L 2d ?'  # Timestamp (unsigned long), 2 doubles (temperatures), bool (relayState)
-
-# Adjust these values according to your log file's path
-log_file_path = 'temp_log_0.bin'
+import matplotlib.dates as mdates
+import glob
+from pathlib import Path
+import argparse
 
 def read_log_file(file_path):
     timestamps = []
     temperatures = []
-    relay_states = []
+    heater_statuses = []
+    num_sensors = None
 
-    with open('LOG_1234.bin', 'rb') as f:
+    with open(file_path, 'rb') as log_file:
         # Read the header
-        header = f.readline().strip()  # HEADER identifier
-        num_sensors = int.from_bytes(f.read(1), byteorder='little')  # Number of sensors
-        timestamp = int.from_bytes(f.read(4), byteorder='little')  # Timestamp
-        print(f"Log file started at: {timestamp}")
-        print(f"Number of sensors: {num_sensors}")
+        header = log_file.read(7)  # Read the first 7 bytes ("HEADER\n")
+        if header != b'HEADER\n':
+            print(f"Invalid log file format: Header not found in {file_path}.")
+            return None, None, None
 
-    # Open the log file and read the number of sensors from the header
-    with open(file_path, 'rb') as file:
-        # Read the header to get the number of sensors
-        header_data = file.read(struct.calcsize(LOG_HEADER_FORMAT))
-        num_sensors = struct.unpack(LOG_HEADER_FORMAT, header_data)[0]
+        # Read the number of sensors (1 byte)
+        num_sensors = struct.unpack('<B', log_file.read(1))[0]
+        print(f"Number of sensors in {file_path}: {num_sensors}")
 
-        print(f"Number of sensors: {num_sensors}")
+        # Read the timestamp (4 bytes)
+        timestamp = struct.unpack('<I', log_file.read(4))[0]
+        year, month, day, hour, minute, second = decode_timestamp(timestamp)
+        print(f"Log start time in {file_path}: {year}-{month:02d}-{day:02d} {hour:02d}:{minute:02d}:{second:02d}")
 
-        # Read the log data entries
+        # Read the size of each temperature value (4 bytes for float, 8 for double)
+        # temp_size = struct.unpack('<B', log_file.read(1))[0]  # Read 1 byte to determine size (4 or 8)
+        temp_size = 4;
+
+
+        # Read the data entries
         while True:
-            # Read the data as per the structure of LogData
-            data = file.read(struct.calcsize(LOG_DATA_FORMAT))
-            if not data:
+            # Read temperatures (num_sensors * 8 bytes each)
+            temp_data = log_file.read(num_sensors * temp_size)
+            if not temp_data:
                 break
+            # Unpack the temperatures based on detected size
+            if temp_size == 4:  # If temperature size is 4 bytes (float)
+                temperatures.append(struct.unpack(f'<{num_sensors}f', temp_data))
+            elif temp_size == 8:  # If temperature size is 8 bytes (double)
+                temperatures.append(struct.unpack(f'<{num_sensors}d', temp_data))
 
-            # Unpack the data from the binary file
-            timestamp, *sensor_data, relay_state = struct.unpack(LOG_DATA_FORMAT, data)
 
-            # Append to lists
-            timestamps.append(timestamp)
-            temperatures.append(sensor_data)
-            relay_states.append(relay_state)
+            # Read heater status (1 byte)
+            heater_status = log_file.read(1)
+            if not heater_status:
+                break
+            heater_statuses.append(struct.unpack('<?', heater_status)[0])
 
-    return timestamps, temperatures, relay_states, num_sensors
+            # Read timestamp (4 bytes)
+            entry_timestamp = log_file.read(4)
+            if not entry_timestamp:
+                break
+            entry_timestamp = struct.unpack('<I', entry_timestamp)[0]
+            year, month, day, hour, minute, second = decode_timestamp(entry_timestamp)
+            timestamps.append(datetime(year + 2000, month, day, hour, minute, second))
 
-def plot_data(timestamps, temperatures, relay_states, num_sensors):
-    # Convert timestamps to a time difference (e.g., seconds from the first timestamp)
-    time_diffs = np.array(timestamps) - timestamps[0]
+        print(f"Log end time in {file_path}: {year}-{month:02d}-{day:02d} {hour:02d}:{minute:02d}:{second:02d}")
+        print(f"# mesurements in {file_path}: {len(timestamps)}")
 
-    # Create a plot
-    plt.figure(figsize=(10, 6))
+    return timestamps, temperatures, heater_statuses
 
-    # Plot temperature data for each sensor
-    for i in range(num_sensors):
-        temp = [temps[i] for temps in temperatures]
-        plt.subplot(2, 1, 1)  # First subplot
-        plt.plot(time_diffs, temp, label=f'Temp{i+1} (°C)')
+def decode_timestamp(timestamp):
+    """Decode the timestamp using bitwise operations
 
-    plt.xlabel('Time (s)')
-    plt.ylabel('Temperature (°C)')
-    plt.title('Temperature over Time')
-    plt.legend()
+    # Example usage
+    timestamp = 0x9912312359  # Example encoded timestamp
+    year, month, day, hour, minute, second = decode_timestamp(timestamp)
+    print(f"Year: {year}, Month: {month}, Day: {day}, Hour: {hour}, Minute: {minute}, Second: {second}")
+    """
+    year = (timestamp >> 26) & 0x3F  # 6 bits for year
+    month = (timestamp >> 22) & 0x0F  # 4 bits for month
+    day = (timestamp >> 17) & 0x1F    # 5 bits for day
+    hour = (timestamp >> 12) & 0x1F   # 5 bits for hour
+    minute = (timestamp >> 6) & 0x3F  # 6 bits for minute
+    second = timestamp & 0x3F         # 6 bits for second
 
-    # Plot heating status
-    plt.subplot(2, 1, 2)  # Second subplot
-    plt.plot(time_diffs, relay_states, label='Heating Status', color='g')
-    plt.xlabel('Time (s)')
-    plt.ylabel('Heating Status (0=Off, 1=On)')
-    plt.title('Heating Status over Time')
-    plt.ylim(-0.1, 1.1)  # Keep the y-axis between 0 and 1 (Off/On)
-    plt.legend()
+    return year, month, day, hour, minute, second
 
-    # Show the plots
-    plt.tight_layout()
+
+
+def plot_data(timestamps, temperatures, heater_statuses):
+    if not timestamps or not temperatures or not heater_statuses:
+        print("No data to plot.")
+        return
+
+    # Flatten temperature data (since it's a list of lists)
+    temperatures = [temp[0] for temp in temperatures]
+
+    # Create the plot
+    fig, ax1 = plt.subplots(figsize=(12, 6))
+
+    # Plot temperature on the primary y-axis
+    ax1.plot(timestamps, temperatures, 'b-', label='Temperature (°C)')
+    ax1.set_xlabel('Time')
+    ax1.set_ylabel('Temperature (°C)', color='b')
+    ax1.tick_params(axis='y', labelcolor='b')
+
+    # Plot heater status on the secondary y-axis
+    ax2 = ax1.twinx()
+    ax2.plot(timestamps, heater_statuses, 'r-', label='Heater Status (ON/OFF)')
+    ax2.set_ylabel('Heater Status', color='r')
+    ax2.tick_params(axis='y', labelcolor='r')
+    ax2.set_ylim(-0.1, 1.1)  # Heater status is binary (0 or 1)
+
+    # Format the x-axis to show time properly
+    ax1.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d %H:%M:%S'))
+    fig.autofmt_xdate()
+
+    # Add a legend
+    fig.legend(loc="upper left", bbox_to_anchor=(0.1, 0.9))
+
+    # Add a title
+    plt.title('Temperature and Heater Status Over Time')
+
+    # Show the plot
     plt.show()
 
-if __name__ == "__main__":
-    # Read the binary log file
-    timestamps, temperatures, relay_states, num_sensors = read_log_file(log_file_path)
+def main(pattern):
+    # Path to the folder containing the files
+    folder_path = Path('./logs')
+    # Find all matching files
+    files = sorted(glob.glob(str(folder_path / pattern)), key=lambda x: int(x[-6:-4]))  # Sort by XX part
 
-    # Plot the data
-    plot_data(timestamps, temperatures, relay_states, num_sensors)
+    # Initialize combined data lists
+    all_timestamps = []
+    all_temperatures = []
+    all_heater_statuses = []
+
+    # Read data from all files
+    for file_path in files:
+        print(f"Reading file: {file_path}")
+        timestamps, temperatures, heater_statuses = read_log_file(file_path)
+        if timestamps and temperatures and heater_statuses:
+            all_timestamps.extend(timestamps)
+            all_temperatures.extend(temperatures)
+            all_heater_statuses.extend(heater_statuses)
+
+    # Plot the combined data
+    if all_timestamps and all_temperatures and all_heater_statuses:
+        plot_data(all_timestamps, all_temperatures, all_heater_statuses)
+        return (all_timestamps, all_temperatures, all_heater_statuses)
+    else:
+        print("No valid data found in any log files.")
+
+if __name__ == "__main__":
+    # Set up argument parsing
+    parser = argparse.ArgumentParser(description="Plot temperature and heater status data from log files.")
+    parser.add_argument(
+        "--pattern",
+        type=str,
+        default='TempLog_250131_230846_*.bin',
+        help="File pattern to match log files (e.g., 'TempLog_250131_230846_*.bin')."
+    )
+    args = parser.parse_args()
+
+    # Run the main function with the provided pattern
+    main(args.pattern)
