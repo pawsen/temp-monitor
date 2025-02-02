@@ -44,6 +44,11 @@ const uint8_t SPI_SCK_PIN = 9;
 
 const uint8_t NUM_THERMOCOUPLES = 1;
 
+unsigned long previousMillis = 0;
+// XXX if the interval is less than 1000, the readings from the thermistor are incorrect.
+// XXX I don't understand why that's the case
+const long interval = 1000; /// logging interval, 1s
+
 I2C_LCD lcd(0x27);
 HeaterControl heaterControl(HEATER_PIN);
 Log logger(ThermoCouplesNum );
@@ -106,38 +111,47 @@ void loop() {
   // Update the menu, handle button presses and rotary encoder inputs
   menu.update();
 
-  float currentTemp = getTemperature();
-  // Update the heater control logic using the first thermocouple as input
-  heaterControl.update(currentTemp);
+  unsigned long currentMillis = millis();
+  if (currentMillis - previousMillis >= interval) {
 
-  double targetTemp = heaterControl.getTargetTemperature();
-  bool heaterStatus = heaterControl.getHeaterStatus();
-  uint32_t autoDisableTime = heaterControl.getTimeUntilDisable();
-  uint32_t hours = autoDisableTime / 3600000; // Calculate hours
-  uint32_t minutes =
-      (autoDisableTime % 3600000) / 60000; // Calculate remaining minutes
+    float currentTemp = getTemperature();
+    // Update the heater control logic using the first thermocouple as input
+    heaterControl.update(currentTemp);
 
-  // Display default screen when menu is not active
-  menu.displayDefaultScreen(currentTemp, targetTemp);
+    double targetTemp = heaterControl.getTargetTemperature();
 
-  // Optional: Log the status or display it on an LCD
-  Serial.print(F("Target °C:, "));
-  Serial.print(targetTemp);
-  Serial.print(F(" Current: "));
-  Serial.print(currentTemp);
-  Serial.print(F(" Heater: "));
-  Serial.print(heaterStatus ? "ON" : "OFF");
-  Serial.print(F(" Auto-disable: "));
-  Serial.print(hours);
-  Serial.print(F("h "));
-  Serial.print(minutes);
-  Serial.print(F("m"));
-  Serial.println();
+    // Display default screen when menu is not active
+    menu.displayDefaultScreen(currentTemp, targetTemp);
 
-  double temperatures[NUM_THERMOCOUPLES] = {(double) currentTemp};
-  // Log the current temperatures and heater status to the SD card
-  if (logger.logData(temperatures, heaterStatus) != 0)
-    displayError(logger);
+    bool heaterStatus = heaterControl.getHeaterStatus();
+    uint32_t autoDisableTime = heaterControl.getTimeUntilDisable();
+    uint32_t hours = autoDisableTime / 3600000; // Calculate hours
+    uint32_t minutes =
+        (autoDisableTime % 3600000) / 60000; // Calculate remaining minutes
 
-  delay(1000);
+    // Optional: Log the status or display it on an LCD
+    Serial.print(F("Target °C:, "));
+    Serial.print(targetTemp);
+    Serial.print(F(" Current: "));
+    Serial.print(currentTemp);
+    Serial.print(F(" Heater: "));
+    Serial.print(heaterStatus ? "ON" : "OFF");
+    Serial.print(F(" Auto-disable: "));
+    Serial.print(hours);
+    Serial.print(F("h "));
+    Serial.print(minutes);
+    Serial.print(F("m"));
+    Serial.print(F(" Log "));
+    Serial.print(logger.isLoggingEnabled() ? "ON " : "OFF ");
+    Serial.print(logger.getLogFileName());
+    Serial.println();
+
+    previousMillis = currentMillis;
+
+    double temperatures[NUM_THERMOCOUPLES] = {(double) currentTemp};
+    // Log the current temperatures and heater status to the SD card
+    if (logger.logData(temperatures, heaterStatus) != 0)
+      displayError(logger);
+  }
+
 }
