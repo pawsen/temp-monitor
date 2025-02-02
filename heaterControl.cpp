@@ -3,7 +3,7 @@
 // Constructor
 HeaterControl::HeaterControl(uint8_t heaterPin)
     : heaterPin(heaterPin), heaterStatus(false),
-      autoDisableTime(12UL * 60UL * 60UL * 1000UL), // Default to 12 hours
+      autoDisableTime(static_cast<uint32_t>(12UL * 60UL * 60UL * 1000UL)), // Default to 12 hours
       lastEnabledTime(0), lastToggleTime(0), targetTemperature(0.0),
       currentTemperature(0.0), hysteresis(2.0), // Hysteresis band of ±2°C
       toggleDelay(5000) // Minimum delay of 5 seconds between toggles
@@ -51,6 +51,8 @@ void HeaterControl::update(double _currentTemperature) {
 
 // Enable the heater and reset the auto-disable timer
 void HeaterControl::enable() {
+  if (heaterStatus)
+    return;
   Serial.println(F("heater is on"));
   heaterStatus = true;
   lastEnabledTime = millis();
@@ -59,6 +61,9 @@ void HeaterControl::enable() {
 
 // Disable the heater
 void HeaterControl::disable() {
+  // don't do anything if the heater is already off.
+  if (!heaterStatus)
+    return;
   Serial.println(F("heater is off"));
   // save the elapsed time so we can contiue from this time if heating is enabled again.
   autoDisableTime -= millis() - lastEnabledTime;
@@ -83,7 +88,7 @@ bool HeaterControl::getHeaterStatus() { return heaterStatus; }
 // Calculate the time left until auto-disable
 uint32_t HeaterControl::getTimeUntilDisable() {
   if (!heaterStatus)
-    return 0;
+    return autoDisableTime;
   uint32_t elapsed = millis() - lastEnabledTime;
   return (elapsed < autoDisableTime) ? (autoDisableTime - elapsed) : 0;
 }

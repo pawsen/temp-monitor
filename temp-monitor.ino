@@ -125,9 +125,8 @@ void loop() {
 
     bool heaterStatus = heaterControl.getHeaterStatus();
     uint32_t autoDisableTime = heaterControl.getTimeUntilDisable();
-    uint32_t hours = autoDisableTime / 3600000; // Calculate hours
-    uint32_t minutes =
-        (autoDisableTime % 3600000) / 60000; // Calculate remaining minutes
+    uint8_t hours, minutes;
+    getHoursAndMinutes(autoDisableTime, hours, minutes);
 
     // Optional: Log the status or display it on an LCD
     Serial.print(F("Target °C:, "));

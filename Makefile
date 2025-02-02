@@ -26,7 +26,7 @@ USER_LIB_PATH = $(abspath $(current_dir)/lib)
 
 # Wire: I2C communication. SPI: not used but included by Adafruit_BusIO
 # ARDUINO_LIBS :=  Wire SPI I2C_LCD MAX6675 New-LiquidCrystal
-ARDUINO_LIBS :=  Wire SPI I2C_LCD MAX6675 Arduino-PID-Library SdFat MAX31855_RT Time Encoder uRTCLib
+ARDUINO_LIBS :=  Wire SPI I2C_LCD MAX6675 Arduino-PID-Library SdFat MAX31855_RT Time Encoder uRTCLib Bounce2
 
 # define USE_I2C for #ifdef in BigCrystal.h
 CPPFLAGS += -DUSE_I2C=1

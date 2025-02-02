@@ -9,46 +9,43 @@ Menu::Menu(uint8_t ENCODER_PIN_A, uint8_t ENCODER_PIN_B,
 // Initialize button pin and any other hardware
 void Menu::init() {
   pinMode(ENCODER_BUTTON_PIN, INPUT_PULLUP);
+  bounce.attach(ENCODER_BUTTON_PIN);
+  bounce.interval(25);
   Serial.println(F("Menu initialized."));
 }
 
+void Menu::exitMenu() {
+  menuActive = false;
+  lcd.clear();
+  Serial.println(F("Exiting menu..."));
+}
+
 void Menu::update() {
+  // Update the Bounce instance (YOU MUST DO THIS EVERY LOOP)
+  bounce.update();
+
+  static bool longPressHandled = false; // Track if long press was already handled
+
+  if (bounce.fell()) { // Button just pressed
+    longPressHandled = false;
+  }
+
+  if (!longPressHandled && bounce.read() == LOW) { // Button is still held
+    if (bounce.currentDuration() > 1000) {
+      Serial.println("long press");
+      handleLongPress();
+      longPressHandled = true; // Prevent double execution
+    }
+  }
+
+  if (bounce.rose() && !longPressHandled) { // Button released before 1000ms
+    Serial.println("short press");
+    handleShortPress();
+  }
+
   // Handle menu navigation if the menu is active
   if (menuActive) {
     handleMenuNavigation();
-    return;
-  }
-
-  unsigned long currentTime = millis(); // Current time for timing logic
-  int buttonState = digitalRead(ENCODER_BUTTON_PIN); // Read the button state
-
-  // Check for button press (LOW state means pressed)
-  if (buttonState == LOW) {
-    if (!buttonPressed) { // Detect new press
-      buttonPressed = true;
-      lastButtonPress = currentTime; // Record the time of the press
-      longPressHandled = false;
-    }
-
-    // Check for long press
-    if (!longPressHandled &&
-        (currentTime - lastButtonPress > 1000)) { // Long press detected
-      handleLongPress(); // Handle the long press action
-      longPressHandled = true;
-    }
-  } else {                   // Button released (HIGH state)
-    if (buttonPressed) {     // If button was previously pressed
-      buttonPressed = false; // Reset button state
-
-      // Only handle a short press if no long press was detected
-      if (!longPressHandled) {
-        if ((currentTime - lastButtonPress) >= 200) { // Short press detected
-          Serial.println(F("Menu is active"));
-          menuActive = true; // Activate the menu
-          displayMenu();
-        }
-      }
-    }
   }
 }
 
@@ -69,36 +66,35 @@ void Menu::handleMenuNavigation() {
     lastEncoderPos = encoderPos; // Update the last known encoder position
     displayMenu();               // Refresh the menu display
   }
+}
 
-  // Handle button press for selecting menu items
-  static unsigned long lastButtonTime = 0; // Last time the button was pressed
-  unsigned long currentTime = millis();    // Current time for debouncing
-
-  if (digitalRead(ENCODER_BUTTON_PIN) == LOW) { // Button is pressed
-    if (currentTime - lastButtonTime >
-        200) {          // Debounce: Only trigger if 200ms have passed
-      selectMenuItem(); // Select the current menu item
-      lastButtonTime = currentTime; // Update the last button press time
-    }
+void Menu::handleShortPress() {
+  if (!menuActive) {
+    // Enter the menu
+    menuActive = true;
+    currentMenuIndex = 0;
+    displayMenu();
+  } else {
+    // Select the current menu item
+    selectMenuItem();
   }
 }
 
 void Menu::handleLongPress() {
   // Toggle the heater on/off
   if (menuActive) {
-    Serial.println(F("Exiting menu..."));
-    menuActive = false;
-    lcd.clear();
+    exitMenu();
   } else {
     heaterControl.toggleHeater();
   }
 }
 
 void Menu::displayMenu() {
-  static int lastMenuIndex = -1; // Track the last displayed menu index
+  // static int lastMenuIndex = -1; // Track the last displayed menu index
 
   // Only update the display if the menu index has changed
   if (currentMenuIndex != lastMenuIndex) {
+    Serial.println("displayMenu");
     lcd.clear(); // Clear the display only when switching menu items
     lastMenuIndex = currentMenuIndex;
 
@@ -121,11 +117,9 @@ void Menu::displayMenu() {
       lcd.print(heaterControl.getHeaterStatus() ? "ON" : "OFF");
       break;
     case 3: {
-      // Wrap the case block in curly braces to limit the scope of variables
       uint32_t autoDisableTime = heaterControl.getTimeUntilDisable();
-      uint32_t hours = autoDisableTime / 3600000; // Calculate hours
-      uint32_t minutes =
-          (autoDisableTime % 3600000) / 60000; // Calculate remaining minutes
+      uint8_t hours, minutes;
+      getHoursAndMinutes(autoDisableTime, hours, minutes);
 
       lcd.print(F("Auto-Disable"));
       lcd.setCursor(0, 1);
@@ -142,15 +136,16 @@ void Menu::displayMenu() {
       lcd.setCursor(0, 1);
       if (logger.isLoggingEnabled()) {
         lcd.print(logger.getLogFileName());
-      } else
+      } else {
         lcd.print(logger.isLoggingEnabled() ? "ON" : "OFF");
+      }
       break;
     }
   }
 }
 
 void Menu::selectMenuItem() {
-  // do the task. If the menu is "read only", like current temp, do nothing.
+  Serial.println("selectMenuItem");
   switch (currentMenuIndex) {
   case 0: // Set Target Temp
     adjustTargetTemperature();
@@ -162,24 +157,25 @@ void Menu::selectMenuItem() {
   case 3: // Set Auto-Disable Time
     adjustAutoDisable();
     break;
-  case 4: // change logging status
-    if (logger.toggleLogging() != 0)
+  case 4: // Change logging status
+    if (logger.toggleLogging() != 0) {
       displayError(logger);
+    }
     break;
   default:
-    // Handle unexpected cases (e.g., invalid menu index)
     Serial.println(F("Invalid menu index!"));
     break;
   }
 
-  Serial.println(F("existing selectMenuItem"));
-  // Keep the menu active after selecting a menu item unless it exits to the
-  // main loop
-  menuActive = false;
+  // **Fix: Force display update after exiting**
+  lastMenuIndex = -1;
+  encoder.read();
+  encoder.read();
   displayMenu();
 }
 
 void Menu::adjustTargetTemperature() {
+  Serial.println("adjustTargetTemperature");
   lcd.clear();
   lcd.setCursor(0, 0);
   lcd.print(F("Set Target Temp"));
@@ -192,11 +188,8 @@ void Menu::adjustTargetTemperature() {
   long encoderPos = encoder.read();
   bool adjusting = true;
 
-  // Wait for button release to avoid immediate exit
-  while (digitalRead(ENCODER_BUTTON_PIN) == LOW)
-    delay(200);
-
   while (adjusting) {
+    bounce.update();
     long newEncoderPos = encoder.read();
 
     // Adjust sensitivity (4 steps per degree)
@@ -212,20 +205,13 @@ void Menu::adjustTargetTemperature() {
       lcd.print(F(" C"));
     }
 
-    int buttonState = digitalRead(ENCODER_BUTTON_PIN);
-
-    // Detect new button press
-    if (buttonState == LOW) {
-      delay(200); // Debounce
+    if (bounce.rose()) {
       adjusting = false;
     }
   }
 
   // Update the target temperature
   heaterControl.setTargetTemperature(targetTemp);
-
-  // Return to the main menu display
-  displayMenu();
 }
 
 void Menu::adjustAutoDisable() {
@@ -237,11 +223,8 @@ void Menu::adjustAutoDisable() {
   long encoderPos = encoder.read();
   bool adjusting = true;
 
-  // Wait for button release to avoid immediate exit
-  while (digitalRead(ENCODER_BUTTON_PIN) == LOW)
-    delay(200);
-
   while (adjusting) {
+    bounce.update();
     long newEncoderPos = encoder.read();
 
     // Adjust sensitivity (4 steps per unit)
@@ -257,9 +240,8 @@ void Menu::adjustAutoDisable() {
       encoderPos = newEncoderPos;
 
       // Update the display
-      uint32_t hours = autoDisableTime / 3600000; // Calculate hours
-      uint32_t minutes =
-          (autoDisableTime % 3600000) / 60000; // Calculate remaining minutes
+      uint8_t hours, minutes;
+      getHoursAndMinutes(autoDisableTime, hours, minutes);
 
       lcd.setCursor(0, 1);
       lcd.print(F("                ")); // Clear the line
@@ -270,21 +252,13 @@ void Menu::adjustAutoDisable() {
       lcd.print(F("m"));
     }
 
-    // Read the button state
-    int buttonState = digitalRead(ENCODER_BUTTON_PIN);
-
-    // Detect new button press
-    if (buttonState == LOW) {
-      delay(200); // Debounce
+    if (bounce.rose()) {
       adjusting = false;
     }
   }
 
   // Update the auto-disable time in the heater control
   heaterControl.setTimeUntilDisable(autoDisableTime);
-
-  // Return to the main menu display
-  displayMenu();
 }
 
 void Menu::displayDefaultScreen(double currentTemp, double targetTemp) {
@@ -307,9 +281,6 @@ void Menu::displayDefaultScreen(double currentTemp, double targetTemp) {
     lcd.print(currentTemp, 1);
     lcd.print(F(" C   ")); // Add spaces to overwrite any previous text
 
-    // lcd.setCursor(0, 2);
-    // lcd.print("Heater: ");
-    // lcd.println(heaterStatus ? "ON" : "OFF");
     lastCurrentTemp = currentTemp;
     lastTargetTemp = targetTemp;
   }
@@ -322,4 +293,9 @@ void displayError(Log &logger) {
   lcd.setCursor(0, 0);
   lcd.print(logger.getErrorMessage());
   delay(2000);
+}
+
+void getHoursAndMinutes(uint32_t autoDisableTime, uint8_t &hours, uint8_t &minutes) {
+    hours = autoDisableTime / 3600000; // Calculate hours
+    minutes = (autoDisableTime % 3600000) / 60000; // Calculate remaining minutes
 }

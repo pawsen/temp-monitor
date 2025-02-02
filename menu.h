@@ -6,6 +6,7 @@
 
 #include <Arduino.h>
 #include <Encoder.h>
+#include <Bounce2.h>
 #include <I2C_LCD.h>
 
 class Menu {
@@ -17,8 +18,12 @@ public:
 
 private:
   Encoder encoder;
+  Bounce bounce;
+
   int currentMenuIndex = 0;
+  int lastMenuIndex = -1;
   bool menuActive = false;
+  bool adjusting = false;
   bool heaterEnabled = false;
   unsigned long lastButtonPress = 0;
   unsigned long lastButtonRelease = 0;
@@ -29,8 +34,10 @@ private:
   void selectMenuItem();
   void displayMenu();
   void handleLongPress();
+  void handleShortPress();
   void adjustTargetTemperature();
   void adjustAutoDisable();
+  void exitMenu();
 
   uint8_t ENCODER_PIN_A;
   uint8_t ENCODER_PIN_B;
@@ -42,5 +49,6 @@ extern Menu menu;
 extern I2C_LCD lcd;
 extern Log logger;
 
-void displayError(Log& logger);
+void displayError(Log &logger);
+void getHoursAndMinutes(uint32_t autoDisableTime, uint8_t &hours, uint8_t &minutes);
 #endif
