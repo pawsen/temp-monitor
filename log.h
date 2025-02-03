@@ -62,7 +62,7 @@ struct LogData {
   uint32_t timestamp;
   float
       *temperatures; // Pointer to dynamically allocated array for temperatures
-  bool heaterStatus; // Heater status
+  bool heaterStatus; // Is the heater heating
 };
 
 class Log {
@@ -72,7 +72,7 @@ public:
 
   // Hardware initialization
   int init(uint8_t SD_CS_PIN);
-  int logData(float *temperatures, bool heaterStatus);
+  int logData(float *temperatures, bool heaterEnabled);
   const char *getErrorMessage() const { return errorMessage; }
   const char *getLogFileName() const {return logFileName; }
   bool isLoggingEnabled();

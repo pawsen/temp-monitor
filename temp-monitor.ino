@@ -127,6 +127,7 @@ void loop() {
     // Display default screen when menu is not active
     menu.displayDefaultScreen(currentTemp, targetTemp);
 
+    bool heaterEnabled = heaterControl.getHeaterEnabled();
     bool heaterStatus = heaterControl.getHeaterStatus();
     uint32_t autoDisableTime = heaterControl.getTimeUntilDisable();
     uint8_t hours, minutes;
@@ -138,6 +139,8 @@ void loop() {
     Serial.print(F(" Current: "));
     Serial.print(currentTemp);
     Serial.print(F(" Heater: "));
+    Serial.print(heaterEnabled ? "ON" : "OFF");
+    Serial.print(F(" Heating: "));
     Serial.print(heaterStatus ? "ON" : "OFF");
     Serial.print(F(" Auto-disable: "));
     Serial.print(hours);
@@ -153,7 +156,7 @@ void loop() {
 
     float temperatures[NUM_THERMOCOUPLES] = { currentTemp};
     // Log the current temperatures and heater status to the SD card
-    if (logger.logData(temperatures, heaterStatus) != 0)
+    if (logger.logData(temperatures, heaterEnabled) != 0)
       displayError(logger);
   }
 

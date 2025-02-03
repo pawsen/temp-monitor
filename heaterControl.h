@@ -3,6 +3,9 @@
 
 #include <Arduino.h>
 
+// heaterEnabled: is the heating enabled (turned on). Toggled by pressing the encoder button
+// heaterStatus: is the heating element on, i.e. is temp below target temp. Requires heaterEnabled = true;
+
 class HeaterControl {
 public:
     HeaterControl(uint8_t heaterPin); // Constructor accepting the heater pin
@@ -11,16 +14,18 @@ public:
     void enable();
     void disable();
     void toggleHeater();
-    bool getHeaterStatus();
+    bool getHeaterEnabled() const { return heaterEnabled; }
+    bool getHeaterStatus() const { return heaterStatus; }
     uint32_t getTimeUntilDisable();
     void setTimeUntilDisable(uint32_t time);
     void setTargetTemperature(float targetTemp);
-    float getTargetTemperature();
-    float getCurrentTemperature();
+    float getTargetTemperature() const { return targetTemperature; }
+    float getCurrentTemperature() const { return currentTemperature; }
 
 private:
     uint8_t heaterPin;
-    bool heaterStatus;
+    bool heaterEnabled = false;
+    bool heaterStatus = false;
     uint32_t autoDisableTime;
     uint32_t lastEnabledTime;
     uint32_t lastToggleTime; // Track the last time the heater was toggled
