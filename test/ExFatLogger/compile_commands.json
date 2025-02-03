@@ -1,178 +1,6 @@
 [
   {
     "arguments": [
-      "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/tools/avr/bin/avr-g++",
-      "-c",
-      "-DUSE_I2C=1",
-      "-D",
-      "DEBUG",
-      "-mmcu=atmega328p",
-      "-DF_CPU=16000000L",
-      "-DARDUINO=1819",
-      "-DARDUINO_ARCH_AVR",
-      "-D__PROG_TYPES_COMPAT__",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/variants/standard",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
-      "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
-      "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
-      "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
-      "-I/home/paw/git/temp-monitor/lib/MAX6675",
-      "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
-      "-Wall",
-      "-ffunction-sections",
-      "-fdata-sections",
-      "-Os",
-      "-fpermissive",
-      "-fno-exceptions",
-      "-std=gnu++11",
-      "-fno-threadsafe-statics",
-      "-flto",
-      "-o",
-      "build-uno/heaterControl.cpp.o",
-      "heaterControl.cpp"
-    ],
-    "directory": "/home/paw/git/temp-monitor",
-    "file": "/home/paw/git/temp-monitor/heaterControl.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/heaterControl.cpp.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/tools/avr/bin/avr-g++",
-      "-c",
-      "-DUSE_I2C=1",
-      "-D",
-      "DEBUG",
-      "-mmcu=atmega328p",
-      "-DF_CPU=16000000L",
-      "-DARDUINO=1819",
-      "-DARDUINO_ARCH_AVR",
-      "-D__PROG_TYPES_COMPAT__",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/variants/standard",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
-      "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
-      "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
-      "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
-      "-I/home/paw/git/temp-monitor/lib/MAX6675",
-      "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
-      "-Wall",
-      "-ffunction-sections",
-      "-fdata-sections",
-      "-Os",
-      "-fpermissive",
-      "-fno-exceptions",
-      "-std=gnu++11",
-      "-fno-threadsafe-statics",
-      "-flto",
-      "-o",
-      "build-uno/log.cpp.o",
-      "log.cpp"
-    ],
-    "directory": "/home/paw/git/temp-monitor",
-    "file": "/home/paw/git/temp-monitor/log.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/log.cpp.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/tools/avr/bin/avr-g++",
-      "-c",
-      "-DUSE_I2C=1",
-      "-D",
-      "DEBUG",
-      "-mmcu=atmega328p",
-      "-DF_CPU=16000000L",
-      "-DARDUINO=1819",
-      "-DARDUINO_ARCH_AVR",
-      "-D__PROG_TYPES_COMPAT__",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/variants/standard",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
-      "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
-      "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
-      "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
-      "-I/home/paw/git/temp-monitor/lib/MAX6675",
-      "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
-      "-Wall",
-      "-ffunction-sections",
-      "-fdata-sections",
-      "-Os",
-      "-fpermissive",
-      "-fno-exceptions",
-      "-std=gnu++11",
-      "-fno-threadsafe-statics",
-      "-flto",
-      "-o",
-      "build-uno/menu.cpp.o",
-      "menu.cpp"
-    ],
-    "directory": "/home/paw/git/temp-monitor",
-    "file": "/home/paw/git/temp-monitor/menu.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/menu.cpp.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/tools/avr/bin/avr-g++",
-      "-c",
-      "-DUSE_I2C=1",
-      "-D",
-      "DEBUG",
-      "-mmcu=atmega328p",
-      "-DF_CPU=16000000L",
-      "-DARDUINO=1819",
-      "-DARDUINO_ARCH_AVR",
-      "-D__PROG_TYPES_COMPAT__",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/variants/standard",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
-      "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
-      "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
-      "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
-      "-I/home/paw/git/temp-monitor/lib/MAX6675",
-      "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
-      "-Wall",
-      "-ffunction-sections",
-      "-fdata-sections",
-      "-Os",
-      "-fpermissive",
-      "-fno-exceptions",
-      "-std=gnu++11",
-      "-fno-threadsafe-statics",
-      "-flto",
-      "-o",
-      "build-uno/tempReader.cpp.o",
-      "tempReader.cpp"
-    ],
-    "directory": "/home/paw/git/temp-monitor",
-    "file": "/home/paw/git/temp-monitor/tempReader.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/tempReader.cpp.o"
-  },
-  {
-    "arguments": [
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/tools/avr/bin/avr-gcc",
       "-c",
       "-DUSE_I2C=1",
@@ -188,15 +16,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -208,9 +31,9 @@
       "build-uno/core/hooks.c.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/hooks.c"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/hooks.c",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/hooks.c.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/hooks.c.o"
   },
   {
     "arguments": [
@@ -229,15 +52,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -249,9 +67,9 @@
       "build-uno/core/WInterrupts.c.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/WInterrupts.c"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/WInterrupts.c",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/WInterrupts.c.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/WInterrupts.c.o"
   },
   {
     "arguments": [
@@ -270,15 +88,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -290,9 +103,9 @@
       "build-uno/core/wiring_analog.c.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/wiring_analog.c"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/wiring_analog.c",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/wiring_analog.c.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/wiring_analog.c.o"
   },
   {
     "arguments": [
@@ -311,15 +124,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -331,9 +139,9 @@
       "build-uno/core/wiring.c.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/wiring.c"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/wiring.c",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/wiring.c.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/wiring.c.o"
   },
   {
     "arguments": [
@@ -352,15 +160,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -372,9 +175,9 @@
       "build-uno/core/wiring_digital.c.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/wiring_digital.c"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/wiring_digital.c",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/wiring_digital.c.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/wiring_digital.c.o"
   },
   {
     "arguments": [
@@ -393,15 +196,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -413,9 +211,9 @@
       "build-uno/core/wiring_pulse.c.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/wiring_pulse.c"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/wiring_pulse.c",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/wiring_pulse.c.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/wiring_pulse.c.o"
   },
   {
     "arguments": [
@@ -434,15 +232,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -454,9 +247,9 @@
       "build-uno/core/wiring_shift.c.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/wiring_shift.c"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/wiring_shift.c",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/wiring_shift.c.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/wiring_shift.c.o"
   },
   {
     "arguments": [
@@ -475,15 +268,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -497,9 +285,9 @@
       "build-uno/core/abi.cpp.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/abi.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/abi.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/abi.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/abi.cpp.o"
   },
   {
     "arguments": [
@@ -518,15 +306,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -540,9 +323,9 @@
       "build-uno/core/CDC.cpp.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/CDC.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/CDC.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/CDC.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/CDC.cpp.o"
   },
   {
     "arguments": [
@@ -561,15 +344,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -583,9 +361,9 @@
       "build-uno/core/HardwareSerial0.cpp.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/HardwareSerial0.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/HardwareSerial0.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/HardwareSerial0.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/HardwareSerial0.cpp.o"
   },
   {
     "arguments": [
@@ -604,15 +382,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -626,9 +399,9 @@
       "build-uno/core/HardwareSerial1.cpp.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/HardwareSerial1.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/HardwareSerial1.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/HardwareSerial1.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/HardwareSerial1.cpp.o"
   },
   {
     "arguments": [
@@ -647,15 +420,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -669,9 +437,9 @@
       "build-uno/core/HardwareSerial2.cpp.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/HardwareSerial2.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/HardwareSerial2.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/HardwareSerial2.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/HardwareSerial2.cpp.o"
   },
   {
     "arguments": [
@@ -690,15 +458,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -712,9 +475,9 @@
       "build-uno/core/HardwareSerial3.cpp.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/HardwareSerial3.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/HardwareSerial3.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/HardwareSerial3.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/HardwareSerial3.cpp.o"
   },
   {
     "arguments": [
@@ -733,15 +496,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -755,9 +513,9 @@
       "build-uno/core/HardwareSerial.cpp.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/HardwareSerial.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/HardwareSerial.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/HardwareSerial.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/HardwareSerial.cpp.o"
   },
   {
     "arguments": [
@@ -776,15 +534,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -798,9 +551,9 @@
       "build-uno/core/IPAddress.cpp.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/IPAddress.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/IPAddress.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/IPAddress.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/IPAddress.cpp.o"
   },
   {
     "arguments": [
@@ -819,15 +572,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -841,9 +589,9 @@
       "build-uno/core/main.cpp.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/main.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/main.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/main.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/main.cpp.o"
   },
   {
     "arguments": [
@@ -862,15 +610,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -884,9 +627,9 @@
       "build-uno/core/new.cpp.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/new.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/new.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/new.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/new.cpp.o"
   },
   {
     "arguments": [
@@ -905,15 +648,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -927,9 +665,9 @@
       "build-uno/core/PluggableUSB.cpp.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/PluggableUSB.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/PluggableUSB.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/PluggableUSB.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/PluggableUSB.cpp.o"
   },
   {
     "arguments": [
@@ -948,15 +686,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -970,9 +703,9 @@
       "build-uno/core/Print.cpp.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/Print.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/Print.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/Print.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/Print.cpp.o"
   },
   {
     "arguments": [
@@ -991,15 +724,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -1013,9 +741,9 @@
       "build-uno/core/Stream.cpp.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/Stream.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/Stream.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/Stream.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/Stream.cpp.o"
   },
   {
     "arguments": [
@@ -1034,15 +762,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -1056,9 +779,9 @@
       "build-uno/core/Tone.cpp.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/Tone.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/Tone.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/Tone.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/Tone.cpp.o"
   },
   {
     "arguments": [
@@ -1077,15 +800,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -1099,9 +817,9 @@
       "build-uno/core/USBCore.cpp.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/USBCore.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/USBCore.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/USBCore.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/USBCore.cpp.o"
   },
   {
     "arguments": [
@@ -1120,15 +838,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -1142,9 +855,9 @@
       "build-uno/core/WMath.cpp.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/WMath.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/WMath.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/WMath.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/WMath.cpp.o"
   },
   {
     "arguments": [
@@ -1163,15 +876,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -1185,9 +893,9 @@
       "build-uno/core/WString.cpp.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/WString.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/WString.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/WString.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/WString.cpp.o"
   },
   {
     "arguments": [
@@ -1206,15 +914,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -1226,9 +929,9 @@
       "build-uno/core/wiring_pulse.S.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/wiring_pulse.S"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino/wiring_pulse.S",
-    "output": "/home/paw/git/temp-monitor/build-uno/core/wiring_pulse.S.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/core/wiring_pulse.S.o"
   },
   {
     "arguments": [
@@ -1247,15 +950,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -1269,9 +967,9 @@
       "build-uno/platformlibs/SPI/src/SPI.cpp.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src/SPI.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src/SPI.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/platformlibs/SPI/src/SPI.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/platformlibs/SPI/src/SPI.cpp.o"
   },
   {
     "arguments": [
@@ -1290,15 +988,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -1312,9 +1005,9 @@
       "build-uno/platformlibs/Wire/src/Wire.cpp.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src/Wire.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src/Wire.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/platformlibs/Wire/src/Wire.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/platformlibs/Wire/src/Wire.cpp.o"
   },
   {
     "arguments": [
@@ -1333,15 +1026,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -1353,9 +1041,9 @@
       "build-uno/platformlibs/Wire/src/utility/twi.c.o",
       "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src/utility/twi.c"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src/utility/twi.c",
-    "output": "/home/paw/git/temp-monitor/build-uno/platformlibs/Wire/src/utility/twi.c.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/platformlibs/Wire/src/utility/twi.c.o"
   },
   {
     "arguments": [
@@ -1374,15 +1062,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -1396,9 +1079,9 @@
       "build-uno/userlibs/Arduino-PID-Library/PID_v1.cpp.o",
       "/home/paw/git/temp-monitor/lib/Arduino-PID-Library/PID_v1.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/Arduino-PID-Library/PID_v1.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/Arduino-PID-Library/PID_v1.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/Arduino-PID-Library/PID_v1.cpp.o"
   },
   {
     "arguments": [
@@ -1417,101 +1100,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
-      "-Wall",
-      "-ffunction-sections",
-      "-fdata-sections",
-      "-Os",
-      "-fpermissive",
-      "-fno-exceptions",
-      "-std=gnu++11",
-      "-fno-threadsafe-statics",
-      "-flto",
-      "-o",
-      "build-uno/userlibs/Bounce2/src/Bounce2.cpp.o",
-      "/home/paw/git/temp-monitor/lib/Bounce2/src/Bounce2.cpp"
-    ],
-    "directory": "/home/paw/git/temp-monitor",
-    "file": "/home/paw/git/temp-monitor/lib/Bounce2/src/Bounce2.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/Bounce2/src/Bounce2.cpp.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/tools/avr/bin/avr-g++",
-      "-c",
-      "-DUSE_I2C=1",
-      "-D",
-      "DEBUG",
-      "-mmcu=atmega328p",
-      "-DF_CPU=16000000L",
-      "-DARDUINO=1819",
-      "-DARDUINO_ARCH_AVR",
-      "-D__PROG_TYPES_COMPAT__",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/variants/standard",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
-      "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
-      "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
-      "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
-      "-I/home/paw/git/temp-monitor/lib/MAX6675",
-      "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
-      "-Wall",
-      "-ffunction-sections",
-      "-fdata-sections",
-      "-Os",
-      "-fpermissive",
-      "-fno-exceptions",
-      "-std=gnu++11",
-      "-fno-threadsafe-statics",
-      "-flto",
-      "-o",
-      "build-uno/userlibs/Encoder/Encoder.cpp.o",
-      "/home/paw/git/temp-monitor/lib/Encoder/Encoder.cpp"
-    ],
-    "directory": "/home/paw/git/temp-monitor",
-    "file": "/home/paw/git/temp-monitor/lib/Encoder/Encoder.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/Encoder/Encoder.cpp.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/tools/avr/bin/avr-g++",
-      "-c",
-      "-DUSE_I2C=1",
-      "-D",
-      "DEBUG",
-      "-mmcu=atmega328p",
-      "-DF_CPU=16000000L",
-      "-DARDUINO=1819",
-      "-DARDUINO_ARCH_AVR",
-      "-D__PROG_TYPES_COMPAT__",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/variants/standard",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
-      "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
-      "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
-      "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
-      "-I/home/paw/git/temp-monitor/lib/MAX6675",
-      "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -1525,9 +1117,9 @@
       "build-uno/userlibs/I2C_LCD/I2C_LCD.cpp.o",
       "/home/paw/git/temp-monitor/lib/I2C_LCD/I2C_LCD.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/I2C_LCD/I2C_LCD.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/I2C_LCD/I2C_LCD.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/I2C_LCD/I2C_LCD.cpp.o"
   },
   {
     "arguments": [
@@ -1546,15 +1138,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -1568,9 +1155,9 @@
       "build-uno/userlibs/MAX31855_RT/MAX31855.cpp.o",
       "/home/paw/git/temp-monitor/lib/MAX31855_RT/MAX31855.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/MAX31855_RT/MAX31855.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/MAX31855_RT/MAX31855.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/MAX31855_RT/MAX31855.cpp.o"
   },
   {
     "arguments": [
@@ -1589,15 +1176,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -1611,9 +1193,9 @@
       "build-uno/userlibs/MAX6675/MAX6675.cpp.o",
       "/home/paw/git/temp-monitor/lib/MAX6675/MAX6675.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/MAX6675/MAX6675.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/MAX6675/MAX6675.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/MAX6675/MAX6675.cpp.o"
   },
   {
     "arguments": [
@@ -1632,15 +1214,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -1654,9 +1231,9 @@
       "build-uno/userlibs/SdFat/src/common/FmtNumber.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/common/FmtNumber.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/common/FmtNumber.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/common/FmtNumber.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/common/FmtNumber.cpp.o"
   },
   {
     "arguments": [
@@ -1675,15 +1252,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -1697,9 +1269,9 @@
       "build-uno/userlibs/SdFat/src/common/FsCache.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/common/FsCache.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/common/FsCache.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/common/FsCache.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/common/FsCache.cpp.o"
   },
   {
     "arguments": [
@@ -1718,15 +1290,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -1740,9 +1307,9 @@
       "build-uno/userlibs/SdFat/src/common/FsDateTime.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/common/FsDateTime.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/common/FsDateTime.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/common/FsDateTime.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/common/FsDateTime.cpp.o"
   },
   {
     "arguments": [
@@ -1761,15 +1328,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -1783,9 +1345,9 @@
       "build-uno/userlibs/SdFat/src/common/FsName.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/common/FsName.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/common/FsName.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/common/FsName.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/common/FsName.cpp.o"
   },
   {
     "arguments": [
@@ -1804,15 +1366,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -1826,9 +1383,9 @@
       "build-uno/userlibs/SdFat/src/common/FsStructs.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/common/FsStructs.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/common/FsStructs.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/common/FsStructs.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/common/FsStructs.cpp.o"
   },
   {
     "arguments": [
@@ -1847,15 +1404,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -1869,9 +1421,9 @@
       "build-uno/userlibs/SdFat/src/common/FsUtf.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/common/FsUtf.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/common/FsUtf.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/common/FsUtf.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/common/FsUtf.cpp.o"
   },
   {
     "arguments": [
@@ -1890,15 +1442,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -1912,9 +1459,9 @@
       "build-uno/userlibs/SdFat/src/common/PrintBasic.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/common/PrintBasic.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/common/PrintBasic.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/common/PrintBasic.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/common/PrintBasic.cpp.o"
   },
   {
     "arguments": [
@@ -1933,15 +1480,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -1955,9 +1497,9 @@
       "build-uno/userlibs/SdFat/src/common/upcase.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/common/upcase.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/common/upcase.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/common/upcase.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/common/upcase.cpp.o"
   },
   {
     "arguments": [
@@ -1976,15 +1518,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -1998,9 +1535,9 @@
       "build-uno/userlibs/SdFat/src/ExFatLib/ExFatDbg.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/ExFatLib/ExFatDbg.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/ExFatLib/ExFatDbg.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/ExFatLib/ExFatDbg.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/ExFatLib/ExFatDbg.cpp.o"
   },
   {
     "arguments": [
@@ -2019,15 +1556,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2041,9 +1573,9 @@
       "build-uno/userlibs/SdFat/src/ExFatLib/ExFatFile.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/ExFatLib/ExFatFile.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/ExFatLib/ExFatFile.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/ExFatLib/ExFatFile.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/ExFatLib/ExFatFile.cpp.o"
   },
   {
     "arguments": [
@@ -2062,15 +1594,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2084,9 +1611,9 @@
       "build-uno/userlibs/SdFat/src/ExFatLib/ExFatFilePrint.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/ExFatLib/ExFatFilePrint.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/ExFatLib/ExFatFilePrint.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/ExFatLib/ExFatFilePrint.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/ExFatLib/ExFatFilePrint.cpp.o"
   },
   {
     "arguments": [
@@ -2105,15 +1632,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2127,9 +1649,9 @@
       "build-uno/userlibs/SdFat/src/ExFatLib/ExFatFileWrite.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/ExFatLib/ExFatFileWrite.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/ExFatLib/ExFatFileWrite.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/ExFatLib/ExFatFileWrite.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/ExFatLib/ExFatFileWrite.cpp.o"
   },
   {
     "arguments": [
@@ -2148,15 +1670,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2170,9 +1687,9 @@
       "build-uno/userlibs/SdFat/src/ExFatLib/ExFatFormatter.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/ExFatLib/ExFatFormatter.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/ExFatLib/ExFatFormatter.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/ExFatLib/ExFatFormatter.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/ExFatLib/ExFatFormatter.cpp.o"
   },
   {
     "arguments": [
@@ -2191,15 +1708,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2213,9 +1725,9 @@
       "build-uno/userlibs/SdFat/src/ExFatLib/ExFatName.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/ExFatLib/ExFatName.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/ExFatLib/ExFatName.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/ExFatLib/ExFatName.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/ExFatLib/ExFatName.cpp.o"
   },
   {
     "arguments": [
@@ -2234,15 +1746,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2256,9 +1763,9 @@
       "build-uno/userlibs/SdFat/src/ExFatLib/ExFatPartition.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/ExFatLib/ExFatPartition.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/ExFatLib/ExFatPartition.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/ExFatLib/ExFatPartition.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/ExFatLib/ExFatPartition.cpp.o"
   },
   {
     "arguments": [
@@ -2277,15 +1784,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2299,9 +1801,9 @@
       "build-uno/userlibs/SdFat/src/ExFatLib/ExFatVolume.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/ExFatLib/ExFatVolume.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/ExFatLib/ExFatVolume.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/ExFatLib/ExFatVolume.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/ExFatLib/ExFatVolume.cpp.o"
   },
   {
     "arguments": [
@@ -2320,15 +1822,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2342,9 +1839,9 @@
       "build-uno/userlibs/SdFat/src/FatLib/FatDbg.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/FatLib/FatDbg.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/FatLib/FatDbg.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/FatLib/FatDbg.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/FatLib/FatDbg.cpp.o"
   },
   {
     "arguments": [
@@ -2363,15 +1860,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2385,9 +1877,9 @@
       "build-uno/userlibs/SdFat/src/FatLib/FatFile.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/FatLib/FatFile.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/FatLib/FatFile.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/FatLib/FatFile.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/FatLib/FatFile.cpp.o"
   },
   {
     "arguments": [
@@ -2406,15 +1898,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2428,9 +1915,9 @@
       "build-uno/userlibs/SdFat/src/FatLib/FatFileLFN.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/FatLib/FatFileLFN.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/FatLib/FatFileLFN.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/FatLib/FatFileLFN.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/FatLib/FatFileLFN.cpp.o"
   },
   {
     "arguments": [
@@ -2449,15 +1936,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2471,9 +1953,9 @@
       "build-uno/userlibs/SdFat/src/FatLib/FatFilePrint.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/FatLib/FatFilePrint.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/FatLib/FatFilePrint.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/FatLib/FatFilePrint.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/FatLib/FatFilePrint.cpp.o"
   },
   {
     "arguments": [
@@ -2492,15 +1974,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2514,9 +1991,9 @@
       "build-uno/userlibs/SdFat/src/FatLib/FatFileSFN.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/FatLib/FatFileSFN.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/FatLib/FatFileSFN.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/FatLib/FatFileSFN.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/FatLib/FatFileSFN.cpp.o"
   },
   {
     "arguments": [
@@ -2535,15 +2012,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2557,9 +2029,9 @@
       "build-uno/userlibs/SdFat/src/FatLib/FatFormatter.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/FatLib/FatFormatter.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/FatLib/FatFormatter.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/FatLib/FatFormatter.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/FatLib/FatFormatter.cpp.o"
   },
   {
     "arguments": [
@@ -2578,15 +2050,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2600,9 +2067,9 @@
       "build-uno/userlibs/SdFat/src/FatLib/FatName.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/FatLib/FatName.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/FatLib/FatName.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/FatLib/FatName.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/FatLib/FatName.cpp.o"
   },
   {
     "arguments": [
@@ -2621,15 +2088,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2643,9 +2105,9 @@
       "build-uno/userlibs/SdFat/src/FatLib/FatPartition.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/FatLib/FatPartition.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/FatLib/FatPartition.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/FatLib/FatPartition.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/FatLib/FatPartition.cpp.o"
   },
   {
     "arguments": [
@@ -2664,15 +2126,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2686,9 +2143,9 @@
       "build-uno/userlibs/SdFat/src/FatLib/FatVolume.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/FatLib/FatVolume.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/FatLib/FatVolume.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/FatLib/FatVolume.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/FatLib/FatVolume.cpp.o"
   },
   {
     "arguments": [
@@ -2707,15 +2164,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2729,9 +2181,9 @@
       "build-uno/userlibs/SdFat/src/FreeStack.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/FreeStack.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/FreeStack.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/FreeStack.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/FreeStack.cpp.o"
   },
   {
     "arguments": [
@@ -2750,15 +2202,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2772,9 +2219,9 @@
       "build-uno/userlibs/SdFat/src/FsLib/FsFile.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/FsLib/FsFile.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/FsLib/FsFile.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/FsLib/FsFile.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/FsLib/FsFile.cpp.o"
   },
   {
     "arguments": [
@@ -2793,15 +2240,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2815,9 +2257,9 @@
       "build-uno/userlibs/SdFat/src/FsLib/FsNew.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/FsLib/FsNew.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/FsLib/FsNew.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/FsLib/FsNew.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/FsLib/FsNew.cpp.o"
   },
   {
     "arguments": [
@@ -2836,15 +2278,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2858,9 +2295,9 @@
       "build-uno/userlibs/SdFat/src/FsLib/FsVolume.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/FsLib/FsVolume.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/FsLib/FsVolume.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/FsLib/FsVolume.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/FsLib/FsVolume.cpp.o"
   },
   {
     "arguments": [
@@ -2879,15 +2316,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2901,9 +2333,9 @@
       "build-uno/userlibs/SdFat/src/iostream/istream.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/iostream/istream.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/iostream/istream.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/iostream/istream.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/iostream/istream.cpp.o"
   },
   {
     "arguments": [
@@ -2922,15 +2354,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2944,9 +2371,9 @@
       "build-uno/userlibs/SdFat/src/iostream/ostream.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/iostream/ostream.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/iostream/ostream.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/iostream/ostream.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/iostream/ostream.cpp.o"
   },
   {
     "arguments": [
@@ -2965,15 +2392,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -2987,9 +2409,9 @@
       "build-uno/userlibs/SdFat/src/iostream/StdioStream.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/iostream/StdioStream.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/iostream/StdioStream.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/iostream/StdioStream.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/iostream/StdioStream.cpp.o"
   },
   {
     "arguments": [
@@ -3008,15 +2430,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -3030,9 +2447,9 @@
       "build-uno/userlibs/SdFat/src/iostream/StreamBaseClass.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/iostream/StreamBaseClass.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/iostream/StreamBaseClass.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/iostream/StreamBaseClass.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/iostream/StreamBaseClass.cpp.o"
   },
   {
     "arguments": [
@@ -3051,15 +2468,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -3073,9 +2485,9 @@
       "build-uno/userlibs/SdFat/src/MinimumSerial.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/MinimumSerial.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/MinimumSerial.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/MinimumSerial.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/MinimumSerial.cpp.o"
   },
   {
     "arguments": [
@@ -3094,15 +2506,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -3116,9 +2523,9 @@
       "build-uno/userlibs/SdFat/src/SdCard/Rp2040Sdio/PioSdioCard.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/SdCard/Rp2040Sdio/PioSdioCard.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/SdCard/Rp2040Sdio/PioSdioCard.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/SdCard/Rp2040Sdio/PioSdioCard.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/SdCard/Rp2040Sdio/PioSdioCard.cpp.o"
   },
   {
     "arguments": [
@@ -3137,15 +2544,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -3159,9 +2561,9 @@
       "build-uno/userlibs/SdFat/src/SdCard/SdCardInfo.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/SdCard/SdCardInfo.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/SdCard/SdCardInfo.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/SdCard/SdCardInfo.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/SdCard/SdCardInfo.cpp.o"
   },
   {
     "arguments": [
@@ -3180,15 +2582,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -3202,9 +2599,9 @@
       "build-uno/userlibs/SdFat/src/SdCard/SdSpiCard.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/SdCard/SdSpiCard.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/SdCard/SdSpiCard.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/SdCard/SdSpiCard.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/SdCard/SdSpiCard.cpp.o"
   },
   {
     "arguments": [
@@ -3223,15 +2620,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -3245,9 +2637,9 @@
       "build-uno/userlibs/SdFat/src/SdCard/TeensySdio/TeensySdio.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/SdCard/TeensySdio/TeensySdio.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/SdCard/TeensySdio/TeensySdio.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/SdCard/TeensySdio/TeensySdio.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/SdCard/TeensySdio/TeensySdio.cpp.o"
   },
   {
     "arguments": [
@@ -3266,15 +2658,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -3288,9 +2675,9 @@
       "build-uno/userlibs/SdFat/src/SpiDriver/SdSpiArtemis.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/SpiDriver/SdSpiArtemis.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/SpiDriver/SdSpiArtemis.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/SpiDriver/SdSpiArtemis.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/SpiDriver/SdSpiArtemis.cpp.o"
   },
   {
     "arguments": [
@@ -3309,15 +2696,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -3331,9 +2713,9 @@
       "build-uno/userlibs/SdFat/src/SpiDriver/SdSpiChipSelect.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/SpiDriver/SdSpiChipSelect.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/SpiDriver/SdSpiChipSelect.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/SpiDriver/SdSpiChipSelect.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/SpiDriver/SdSpiChipSelect.cpp.o"
   },
   {
     "arguments": [
@@ -3352,15 +2734,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -3374,9 +2751,9 @@
       "build-uno/userlibs/SdFat/src/SpiDriver/SdSpiDue.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/SpiDriver/SdSpiDue.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/SpiDriver/SdSpiDue.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/SpiDriver/SdSpiDue.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/SpiDriver/SdSpiDue.cpp.o"
   },
   {
     "arguments": [
@@ -3395,15 +2772,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -3417,9 +2789,9 @@
       "build-uno/userlibs/SdFat/src/SpiDriver/SdSpiParticle.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/SpiDriver/SdSpiParticle.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/SpiDriver/SdSpiParticle.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/SpiDriver/SdSpiParticle.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/SpiDriver/SdSpiParticle.cpp.o"
   },
   {
     "arguments": [
@@ -3438,15 +2810,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -3460,9 +2827,9 @@
       "build-uno/userlibs/SdFat/src/SpiDriver/SdSpiSTM32Core.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/SpiDriver/SdSpiSTM32Core.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/SpiDriver/SdSpiSTM32Core.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/SpiDriver/SdSpiSTM32Core.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/SpiDriver/SdSpiSTM32Core.cpp.o"
   },
   {
     "arguments": [
@@ -3481,15 +2848,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -3503,9 +2865,9 @@
       "build-uno/userlibs/SdFat/src/SpiDriver/SdSpiSTM32.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/SpiDriver/SdSpiSTM32.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/SpiDriver/SdSpiSTM32.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/SpiDriver/SdSpiSTM32.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/SpiDriver/SdSpiSTM32.cpp.o"
   },
   {
     "arguments": [
@@ -3524,15 +2886,10 @@
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
       "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
       "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
       "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
       "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
       "-I/home/paw/git/temp-monitor/lib/MAX6675",
       "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
       "-Wall",
       "-ffunction-sections",
       "-fdata-sections",
@@ -3546,137 +2903,8 @@
       "build-uno/userlibs/SdFat/src/SpiDriver/SdSpiTeensy3.cpp.o",
       "/home/paw/git/temp-monitor/lib/SdFat/src/SpiDriver/SdSpiTeensy3.cpp"
     ],
-    "directory": "/home/paw/git/temp-monitor",
+    "directory": "/home/paw/git/temp-monitor/test",
     "file": "/home/paw/git/temp-monitor/lib/SdFat/src/SpiDriver/SdSpiTeensy3.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/SdFat/src/SpiDriver/SdSpiTeensy3.cpp.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/tools/avr/bin/avr-g++",
-      "-c",
-      "-DUSE_I2C=1",
-      "-D",
-      "DEBUG",
-      "-mmcu=atmega328p",
-      "-DF_CPU=16000000L",
-      "-DARDUINO=1819",
-      "-DARDUINO_ARCH_AVR",
-      "-D__PROG_TYPES_COMPAT__",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/variants/standard",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
-      "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
-      "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
-      "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
-      "-I/home/paw/git/temp-monitor/lib/MAX6675",
-      "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
-      "-Wall",
-      "-ffunction-sections",
-      "-fdata-sections",
-      "-Os",
-      "-fpermissive",
-      "-fno-exceptions",
-      "-std=gnu++11",
-      "-fno-threadsafe-statics",
-      "-flto",
-      "-o",
-      "build-uno/userlibs/Time/DateStrings.cpp.o",
-      "/home/paw/git/temp-monitor/lib/Time/DateStrings.cpp"
-    ],
-    "directory": "/home/paw/git/temp-monitor",
-    "file": "/home/paw/git/temp-monitor/lib/Time/DateStrings.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/Time/DateStrings.cpp.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/tools/avr/bin/avr-g++",
-      "-c",
-      "-DUSE_I2C=1",
-      "-D",
-      "DEBUG",
-      "-mmcu=atmega328p",
-      "-DF_CPU=16000000L",
-      "-DARDUINO=1819",
-      "-DARDUINO_ARCH_AVR",
-      "-D__PROG_TYPES_COMPAT__",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/variants/standard",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
-      "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
-      "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
-      "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
-      "-I/home/paw/git/temp-monitor/lib/MAX6675",
-      "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
-      "-Wall",
-      "-ffunction-sections",
-      "-fdata-sections",
-      "-Os",
-      "-fpermissive",
-      "-fno-exceptions",
-      "-std=gnu++11",
-      "-fno-threadsafe-statics",
-      "-flto",
-      "-o",
-      "build-uno/userlibs/Time/Time.cpp.o",
-      "/home/paw/git/temp-monitor/lib/Time/Time.cpp"
-    ],
-    "directory": "/home/paw/git/temp-monitor",
-    "file": "/home/paw/git/temp-monitor/lib/Time/Time.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/Time/Time.cpp.o"
-  },
-  {
-    "arguments": [
-      "/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/tools/avr/bin/avr-g++",
-      "-c",
-      "-DUSE_I2C=1",
-      "-D",
-      "DEBUG",
-      "-mmcu=atmega328p",
-      "-DF_CPU=16000000L",
-      "-DARDUINO=1819",
-      "-DARDUINO_ARCH_AVR",
-      "-D__PROG_TYPES_COMPAT__",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/cores/arduino",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/variants/standard",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/SPI/src",
-      "-I/nix/store/3db93h2gvr5zpqlad593n19zr263s0lp-arduino-core-1.8.19/share/arduino/hardware/arduino/avr/libraries/Wire/src",
-      "-I/home/paw/git/temp-monitor/lib/Arduino-PID-Library",
-      "-I/home/paw/git/temp-monitor/lib/Bounce2/src",
-      "-I/home/paw/git/temp-monitor/lib/Encoder",
-      "-I/home/paw/git/temp-monitor/lib/Encoder/utility",
-      "-I/home/paw/git/temp-monitor/lib/I2C_LCD",
-      "-I/home/paw/git/temp-monitor/lib/MAX31855_RT",
-      "-I/home/paw/git/temp-monitor/lib/MAX6675",
-      "-I/home/paw/git/temp-monitor/lib/SdFat/src",
-      "-I/home/paw/git/temp-monitor/lib/Time",
-      "-I/home/paw/git/temp-monitor/lib/uRTCLib/src",
-      "-Wall",
-      "-ffunction-sections",
-      "-fdata-sections",
-      "-Os",
-      "-fpermissive",
-      "-fno-exceptions",
-      "-std=gnu++11",
-      "-fno-threadsafe-statics",
-      "-flto",
-      "-o",
-      "build-uno/userlibs/uRTCLib/src/uRTCLib.cpp.o",
-      "/home/paw/git/temp-monitor/lib/uRTCLib/src/uRTCLib.cpp"
-    ],
-    "directory": "/home/paw/git/temp-monitor",
-    "file": "/home/paw/git/temp-monitor/lib/uRTCLib/src/uRTCLib.cpp",
-    "output": "/home/paw/git/temp-monitor/build-uno/userlibs/uRTCLib/src/uRTCLib.cpp.o"
+    "output": "/home/paw/git/temp-monitor/test/build-uno/userlibs/SdFat/src/SpiDriver/SdSpiTeensy3.cpp.o"
   }
 ]
