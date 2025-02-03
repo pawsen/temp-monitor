@@ -5,18 +5,33 @@
 #include "log.h"
 
 #include <Arduino.h>
-#include <Encoder.h>
 #include <Bounce2.h>
+#include <Encoder.h>
 #include <I2C_LCD.h>
 
 class Menu {
 public:
-    Menu(uint8_t ENCODER_PIN_A, uint8_t ENCODER_PIN_B, uint8_t ENCODER_BUTTON_PIN);
-    void init();
+  Menu(uint8_t ENCODER_PIN_A, uint8_t ENCODER_PIN_B,
+       uint8_t ENCODER_BUTTON_PIN);
+  void init();
   void update();
-    void displayDefaultScreen(float currentTemp, float targetTemp);
+  void displayDefaultScreen(float currentTemp, float targetTemp);
+
 
 private:
+  struct MenuItem {
+    const char *label;
+    void (Menu::*selectHandler)();
+  };
+  static const int menuItemCount = 6;
+  const MenuItem menuItems[menuItemCount] = {
+      {"Target Temp", &Menu::adjustTargetTemperature},
+      {"Current Temp:", nullptr},
+      {"Heater: ", nullptr},
+      {"Heating: ", nullptr},
+      {"Auto-Disable", &Menu::adjustAutoDisable},
+      {"Logging: ", &Menu::toggleLogging}};
+
   Encoder encoder;
   Bounce bounce;
 
@@ -37,6 +52,7 @@ private:
   void handleShortPress();
   void adjustTargetTemperature();
   void adjustAutoDisable();
+  void toggleLogging();
   void exitMenu();
 
   uint8_t ENCODER_PIN_A;
@@ -50,5 +66,6 @@ extern I2C_LCD lcd;
 extern Log logger;
 
 void displayError(Log &logger);
-void getHoursAndMinutes(uint32_t autoDisableTime, uint8_t &hours, uint8_t &minutes);
+void getHoursAndMinutes(uint32_t autoDisableTime, uint8_t &hours,
+                        uint8_t &minutes);
 #endif

@@ -58,13 +58,6 @@ const uint8_t SD_CS_PIN = 4; // Chip Select for the SD card
 #define SD_CONFIG SdSpiConfig(SD_CS_PIN, SHARED_SPI, SPI_CLOCK)
 #endif  // ENABLE_DEDICATED_SPI
 
-struct LogData {
-  uint32_t timestamp;
-  float
-      *temperatures; // Pointer to dynamically allocated array for temperatures
-  bool heaterStatus; // Is the heater heating
-};
-
 class Log {
 public:
   Log(uint8_t numSensors);
@@ -74,11 +67,18 @@ public:
   int init(uint8_t SD_CS_PIN);
   int logData(float *temperatures, bool heaterEnabled);
   const char *getErrorMessage() const { return errorMessage; }
-  const char *getLogFileName() const {return logFileName; }
+  const char *getLogFileName() const { return logFileName; }
   bool isLoggingEnabled();
   int toggleLogging();
   int startLogging();
   int stopLogging();
+
+  struct LogData {
+    uint32_t timestamp;
+    float *
+        temperatures; // Pointer to dynamically allocated array for temperatures
+    bool heaterStatus; // Is the heater heating
+  };
 
 private:
   uint8_t numSensors;   // Number of thermocouples

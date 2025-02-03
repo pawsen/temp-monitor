@@ -24,7 +24,8 @@ void Menu::update() {
   // Update the Bounce instance (YOU MUST DO THIS EVERY LOOP)
   bounce.update();
 
-  static bool longPressHandled = false; // Track if long press was already handled
+  static bool longPressHandled =
+      false; // Track if long press was already handled
 
   if (bounce.fell()) { // Button just pressed
     longPressHandled = false;
@@ -50,21 +51,17 @@ void Menu::update() {
 }
 
 void Menu::handleMenuNavigation() {
-  int encoderPos = encoder.read() / 4; // Get the encoder position
-  static int lastEncoderPos = 0; // Store the last known position of the encoder
+  int encoderPos = encoder.read() / 4;
+  static int lastEncoderPos = 0;
 
-  // Check if the encoder position has changed
   if (encoderPos != lastEncoderPos) {
-    if (encoderPos > lastEncoderPos) { // Encoder rotated clockwise
-      currentMenuIndex =
-          (currentMenuIndex + 1) % 5; // Move to the next menu item
-    } else if (encoderPos <
-               lastEncoderPos) { // Encoder rotated counterclockwise
-      currentMenuIndex =
-          (currentMenuIndex - 1 + 5) % 5; // Move to the previous menu item
+    if (encoderPos > lastEncoderPos) {
+      currentMenuIndex = (currentMenuIndex + 1) % menuItemCount;
+    } else if (encoderPos < lastEncoderPos) {
+      currentMenuIndex = (currentMenuIndex - 1 + menuItemCount) % menuItemCount;
     }
-    lastEncoderPos = encoderPos; // Update the last known encoder position
-    displayMenu();               // Refresh the menu display
+    lastEncoderPos = encoderPos;
+    displayMenu();
   }
 }
 
@@ -90,40 +87,40 @@ void Menu::handleLongPress() {
 }
 
 void Menu::displayMenu() {
-  // static int lastMenuIndex = -1; // Track the last displayed menu index
-
   // Only update the display if the menu index has changed
   if (currentMenuIndex != lastMenuIndex) {
     Serial.println("displayMenu");
-    lcd.clear(); // Clear the display only when switching menu items
+    lcd.clear();
     lastMenuIndex = currentMenuIndex;
+
+    lcd.print(menuItems[currentMenuIndex].label);
 
     switch (currentMenuIndex) {
     case 0:
-      lcd.print(F("Target Temp"));
       lcd.setCursor(0, 1);
       lcd.print(heaterControl.getTargetTemperature(), 1);
       lcd.print(F(" C"));
       break;
     case 1:
-      lcd.print(F("Current Temp:"));
       lcd.setCursor(0, 1);
       lcd.print(heaterControl.getCurrentTemperature(), 1);
       lcd.print(F(" C"));
       break;
     case 2:
-      lcd.print(F("Heater: "));
+      lcd.setCursor(0, 1);
+      lcd.print(heaterControl.getHeaterEnabled() ? "ON" : "OFF");
+      break;
+    case 3:
       lcd.setCursor(0, 1);
       lcd.print(heaterControl.getHeaterStatus() ? "ON" : "OFF");
       break;
-    case 3: {
+    case 4: {
       uint32_t autoDisableTime = heaterControl.getTimeUntilDisable();
       uint8_t hours, minutes;
       getHoursAndMinutes(autoDisableTime, hours, minutes);
 
-      lcd.print(F("Auto-Disable"));
       lcd.setCursor(0, 1);
-      lcd.print(F("                ")); // Clear the line
+      lcd.print(F("                "));
       lcd.setCursor(0, 1);
       lcd.print(hours);
       lcd.print(F("h "));
@@ -131,11 +128,22 @@ void Menu::displayMenu() {
       lcd.print(F("m"));
       break;
     }
-    case 4:
-      lcd.print(F("Logging: "));
+    case 5:
       lcd.setCursor(0, 1);
       if (logger.isLoggingEnabled()) {
-        lcd.print(logger.getLogFileName());
+        String filename = logger.getLogFileName();
+        if (filename.length() > 20) {
+          // Scroll the filename once if longer than LCD_WIDTH chars
+          const int LCD_WIDTH = 20;
+          for (size_t i = 0; i < filename.length() - LCD_WIDTH + 1; i++) {
+            lcd.clear();
+            lcd.setCursor(0, 1);
+            lcd.print(filename.substring(i, i + 20));
+            delay(300); // Delay for scrolling effect (adjust timing as needed)
+          }
+        } else {
+          lcd.print(filename);
+        }
       } else {
         lcd.print(logger.isLoggingEnabled() ? "ON" : "OFF");
       }
@@ -146,30 +154,12 @@ void Menu::displayMenu() {
 
 void Menu::selectMenuItem() {
   Serial.println("selectMenuItem");
-  switch (currentMenuIndex) {
-  case 0: // Set Target Temp
-    adjustTargetTemperature();
-    break;
-  case 1: // View Temp
-    break;
-  case 2: // View Heater Status
-    break;
-  case 3: // Set Auto-Disable Time
-    adjustAutoDisable();
-    break;
-  case 4: // Change logging status
-    if (logger.toggleLogging() != 0) {
-      displayError(logger);
-    }
-    break;
-  default:
-    Serial.println(F("Invalid menu index!"));
-    break;
+  if (menuItems[currentMenuIndex].selectHandler != nullptr) {
+    (this->*menuItems[currentMenuIndex].selectHandler)();
   }
 
   // **Fix: Force display update after exiting**
   lastMenuIndex = -1;
-  encoder.read();
   encoder.read();
   displayMenu();
 }
@@ -261,6 +251,12 @@ void Menu::adjustAutoDisable() {
   heaterControl.setTimeUntilDisable(autoDisableTime);
 }
 
+void Menu::toggleLogging() {
+  if (logger.toggleLogging() != 0) {
+    displayError(logger);
+  }
+}
+
 void Menu::displayDefaultScreen(float currentTemp, float targetTemp) {
   if (menuActive) {
     return; // Skip updating the default screen when the menu is active
@@ -295,7 +291,8 @@ void displayError(Log &logger) {
   delay(2000);
 }
 
-void getHoursAndMinutes(uint32_t autoDisableTime, uint8_t &hours, uint8_t &minutes) {
-    hours = autoDisableTime / 3600000; // Calculate hours
-    minutes = (autoDisableTime % 3600000) / 60000; // Calculate remaining minutes
+void getHoursAndMinutes(uint32_t autoDisableTime, uint8_t &hours,
+                        uint8_t &minutes) {
+  hours = autoDisableTime / 3600000;             // Calculate hours
+  minutes = (autoDisableTime % 3600000) / 60000; // Calculate remaining minutes
 }
